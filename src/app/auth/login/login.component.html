@@ -16,9 +16,9 @@
         <div class="col-lg-5">
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Sign in</small>
-              </div>
+              <!--              <div class="text-center text-muted mb-4">-->
+              <!--                <small>Sign in</small>-->
+              <!--              </div>-->
               <form [formGroup]="loginForm" (ngSubmit)="login()" role="form">
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">
@@ -57,7 +57,7 @@
             <!--              </a>-->
             <!--            </div>-->
             <div class="col-6 text-right">
-              <a routerLink="/signup" class="text-light">
+              <a routerLink="/sign-up" class="text-light">
                 <small>Create new account</small>
               </a>
             </div>

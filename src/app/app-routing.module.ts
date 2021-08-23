@@ -8,17 +8,19 @@ import { CreateSubredditComponent } from './subreddit/create-subreddit/create-su
 import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subreddits.component';
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-import { AuthGuard } from './auth/auth.guard';
+import {AuthGuard} from './auth/auth.guard';
+import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'view-post/:id', component: ViewPostComponent },
-  { path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'list-subreddits', component: ListSubredditsComponent },
-  { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
-  { path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard] },
-  { path: 'sign-up', component: SignupComponent },
-  { path: 'login', component: LoginComponent }
+  {path: '', component: HomeComponent},
+  {path: 'view-post/:id', component: ViewPostComponent},
+  {path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'list-subreddits', component: ListSubredditsComponent},
+  {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
+  {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},
+  {path: 'sign-up', component: SignupComponent},
+  {path: 'final-touch', component: FinalTouchComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
