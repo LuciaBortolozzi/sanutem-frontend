@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {SignupComponent} from './auth/signup/signup.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,7 @@ import {ViewPostComponent} from './post/view-post/view-post.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {FooterComponent} from './footer/footer.component';
+import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {FooterComponent} from './footer/footer.component';
     ListSubredditsComponent,
     ViewPostComponent,
     UserProfileComponent,
-    FooterComponent
+    FooterComponent,
+    FinalTouchComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import {FooterComponent} from './footer/footer.component';
     ToastrModule.forRoot(),
     FontAwesomeModule,
     EditorModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     {
