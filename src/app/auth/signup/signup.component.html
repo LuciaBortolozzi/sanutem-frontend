@@ -1,56 +1,78 @@
-<div class="register-section">
-    <div class="row justify-content-center">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header" style="text-align: center">
-                    <h4>Register</h4>
-                </div>
-                <div class="card-body">
-                    <form [formGroup]="signupForm" (ngSubmit)="signup()">
-                        <div class="form-group row">
-                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
-                                Address</label>
-                            <div class="col-md-6">
-                                <input type="text" [formControlName]="'email'" id="email_address" class="form-control" name="email-address" required
-                                    autofocus>
-                                <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
-                                    Please provide a valid email
-                                </span>
-                            </div>
-                        </div>
-
-                      <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">Username</label>
-                        <div class="col-md-6">
-                          <input type="text" [formControlName]="'username'" class="form-control" required autofocus>
-                          <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
-                                    Please provide a valid username
-                                </span>
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                        <div class="col-md-6">
-                          <input type="password" [formControlName]="'password'" id="password" class="form-control"
-                                 name="password" required>
-                          <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
-                                    Please provide a valid Password
-                                </span>
-                        </div>
-                      </div>
-
-                      <span class="col-md-6 offset-md-4">
-                            <button type="submit" class="sign-up">
-                                Sign Up
-                            </button>
-                            <span style="padding-left: 15px">Existing user? <a routerLink="/login">Log In</a></span>
-                        </span>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3"></div>
+<!--Need to fix-->
+<main>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-</div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <!--              <div class="text-center text-muted mb-4">-->
+              <!--                <small>Sign in</small>-->
+              <!--              </div>-->
+              <form [formGroup]="signupForm" (ngSubmit)="signup()" role="form">
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Email" type="text" id="email"
+                           [formControlName]="'email'" name="email" required autofocus>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Username" type="text" id="user_name"
+                           [formControlName]="'username'" name="user_name" required autofocus>
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" type="password" [formControlName]="'password'"
+                           name="password" required>
+                  </div>
+                </div>
+                <!--                <div class="custom-control custom-control-alternative custom-checkbox">-->
+                <!--                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">-->
+                <!--                  <label class="custom-control-label" for=" customCheckLogin">-->
+                <!--                    <span>Remember me</span>-->
+                <!--                  </label>-->
+                <!--                </div>-->
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">Sign up</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <!--            <div class="col-6">-->
+            <!--              <a  class="text-light">-->
+            <!--                <small>Forgot password?</small>-->
+            <!--              </a>-->
+            <!--            </div>-->
+            <div class="col-6 text-right">
+              <a routerLink="/login" class="text-light">
+                <small>Existing user? Log in</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
