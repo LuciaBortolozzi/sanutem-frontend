@@ -16,13 +16,21 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   focus: boolean;
   focus1: boolean;
+  model: any;
+  today: Date;
 
   constructor(private authService: AuthService, private router: Router,
               private toastr: ToastrService) {
     this.signupRequestPayload = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      firstName: '',
+      lastName: '',
+      dni: '',
+      address: '',
+      birthday: this.today,
+      sex: ''
     };
   }
 
@@ -31,6 +39,7 @@ export class SignupComponent implements OnInit {
       username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
+      sex: new FormControl('', Validators.required),
     });
   }
 
@@ -38,14 +47,23 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.email = this.signupForm.get('email').value;
     this.signupRequestPayload.username = this.signupForm.get('username').value;
     this.signupRequestPayload.password = this.signupForm.get('password').value;
+    this.signupRequestPayload.firstName = this.signupForm.get('firstName').value;
+    this.signupRequestPayload.lastName = this.signupForm.get('lastName').value;
+    this.signupRequestPayload.dni = this.signupForm.get('dni').value;
+    this.signupRequestPayload.address = this.signupForm.get('address').value;
+    this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
+    this.signupRequestPayload.sex = this.signupForm.get('sex').value;
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {
         this.router.navigate(['/login'],
-          { queryParams: { registered: 'true' } });
+          {queryParams: {registered: 'true'}});
       }, error => {
         console.log(error);
         this.toastr.error('Registration Failed! Please try again');
       });
+  }
+
+  onDateSelection($event: Event) {
   }
 }
