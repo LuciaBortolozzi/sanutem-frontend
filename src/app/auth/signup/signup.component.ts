@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
       lastName: '',
       dni: '',
       address: '',
-      birthday: this.today,
+      // birthday: this.today,
       sex: ''
     };
   }
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       dni: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      birthday: new FormControl('', Validators.required),
+      // birthday: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
     });
   }
@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.lastName = this.signupForm.get('lastName').value;
     this.signupRequestPayload.dni = this.signupForm.get('dni').value;
     this.signupRequestPayload.address = this.signupForm.get('address').value;
-    this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
+    // this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
     this.signupRequestPayload.sex = this.signupForm.get('sex').value;
 
     this.authService.signup(this.signupRequestPayload)

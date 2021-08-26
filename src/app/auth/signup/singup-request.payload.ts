@@ -6,6 +6,6 @@ export interface SignupRequestPayload {
   lastName: string;
   dni: string;
   address: string;
-  birthday: Date;
+  // birthday: Date;
   sex: string;
 }
