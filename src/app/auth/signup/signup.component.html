@@ -1,4 +1,18 @@
 <!--Need to fix-->
+<div>
+  <ngb-alert class="alert-danger" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+    <span class="alert-text">Invalid Email</span>
+  </ngb-alert>
+  <ngb-alert class="alert-danger" *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+    <span class="alert-text">Invalid Username</span>
+  </ngb-alert>
+  <ngb-alert class="alert-danger" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+    <span class="alert-text">Invalid password</span>
+  </ngb-alert>
+  <!--  <ngb-alert class="alert-danger" *ngIf="!signupForm.get('sex').valid && signupForm.get('sex').touched">-->
+  <!--    <span class="alert-text">Choose your sex</span>-->
+  <!--  </ngb-alert>-->
+</div>
 <main>
   <section class="section section-shaped section-lg">
     <div class="shape shape-style-1 bg-gradient-default">
@@ -20,6 +34,7 @@
               <!--                <small>Sign in</small>-->
               <!--              </div>-->
               <form [formGroup]="signupForm" (ngSubmit)="signup()" role="form">
+
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -34,8 +49,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Username" type="text" id="user_name"
-                           [formControlName]="'username'" name="user_name" required autofocus>
+                    <input class="form-control" placeholder="Username" type="text" id="username"
+                           [formControlName]="'username'" name="username" required autofocus>
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus1===true}">
@@ -53,6 +68,75 @@
                 <!--                    <span>Remember me</span>-->
                 <!--                  </label>-->
                 <!--                </div>-->
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="First Name" type="text" id="firstName"
+                           [formControlName]="'firstName'"
+                           name="firstName" autofocus>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Last Name" type="text" id="lastName"
+                           [formControlName]="'lastName'"
+                           name="lastName" autofocus>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="DNI" type="text" id="dni" [formControlName]="'dni'"
+                           name="dni" autofocus>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Address" type="text" id="address"
+                           [formControlName]="'address'"
+                           name="address" required autofocus>
+                  </div>
+                </div>
+                <!-- Datepicker -->
+                <div class="form-group mb-3">
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-calendar-grid-59"></i></span>
+                      </div>
+                      <input class="form-control datepicker" placeholder="Birthday"
+                             id="birthday" name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
+                             (focus)="focus1=true"
+                             (blur)="focus1=false" type="text" (select)="onDateSelection($event)" autocomplete="off"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="custom-control custom-radio mb-3">
+                    <input id="male" name="sex" [formControlName]="'sex'" class="custom-control-input" value="male"
+                           type="radio">
+                    <label class="custom-control-label" for="male">
+                      <label>Male</label>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input id="female" name="sex" [formControlName]="'sex'" class="custom-control-input" value="female"
+                           type="radio">
+                    <label class="custom-control-label" for="female">
+                      <label>Female</label>
+                    </label>
+                  </div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Sign up</button>
                 </div>
