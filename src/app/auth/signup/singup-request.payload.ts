@@ -11,6 +11,11 @@ export interface SignupRequestPayload {
   birthday: string;       // NgbDate;
   sex: string;
   role: string;
+  blood_type: string;
+  medical_history: string;
+  surgeries: string;
+  medicines: string;
   license_number: string;
+  specialization: string;
   // terms: boolean;
 }
