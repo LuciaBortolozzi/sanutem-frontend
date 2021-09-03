@@ -114,7 +114,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-calendar-grid-59"></i></span>
                       </div>
-                      <input class="form-control datepicker" placeholder="Birthday"
+                      <input class="form-control datepicker" placeholder="Birthday" formControlName="birthday"
                              id="birthday" name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()"
                              (focus)="focus1=true"
                              (blur)="focus1=false" type="text" (select)="onDateSelection($event)" autocomplete="off"/>
@@ -135,6 +135,42 @@
                     <label class="custom-control-label" for="female">
                       <label>Female</label>
                     </label>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="custom-control custom-radio mb-3">
+                    <input id="patient" name="role" [formControlName]="'role'" class="custom-control-input"
+                           value="ROLE_PATIENT"
+                           type="radio">
+                    <label class="custom-control-label" for="patient">
+                      <label>I'm a patient</label>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input id="professional" name="role" [formControlName]="'role'" class="custom-control-input"
+                           value="ROLE_PROFESSIONAL"
+                           type="radio">
+                    <label class="custom-control-label" for="professional">
+                      <label>I'm a professional</label>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio mb-3">
+                    <input id="receptionist" name="role" [formControlName]="'role'" class="custom-control-input"
+                           value="ROLE_RECEPTIONIST"
+                           type="radio">
+                    <label class="custom-control-label" for="receptionist">
+                      <label>I'm a receptionist</label>
+                    </label>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').valid" class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="License Number" type="text" id="license_number"
+                           [formControlName]="'license_number'"
+                           name="license_number" autofocus>
                   </div>
                 </div>
                 <div class="text-center">

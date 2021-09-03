@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SignupRequestPayload } from './singup-request.payload';
-import { AuthService } from '../shared/auth.service';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {SignupRequestPayload} from './singup-request.payload';
+import {AuthService} from '../shared/auth.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {toJSDate} from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+
+declare let $: any;
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +20,16 @@ export class SignupComponent implements OnInit {
   focus: boolean;
   focus1: boolean;
   model: any;
-  today: Date;
+
+  /*  username: FormControl;
+    email: FormControl;
+    password: FormControl;
+    firstName: FormControl;
+    lastName: FormControl;
+    dni: FormControl;
+    address: FormControl;
+    birthday: FormControl;
+    sex: FormControl;*/
 
   constructor(private authService: AuthService, private router: Router,
               private toastr: ToastrService) {
@@ -29,23 +41,48 @@ export class SignupComponent implements OnInit {
       lastName: '',
       dni: '',
       address: '',
-      // birthday: this.today,
-      sex: ''
+      birthday: '',
+      sex: '',
+      role: '',
+      license_number: ''
     };
   }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(10),
+        Validators.minLength(5)
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(15),
+        Validators.minLength(5)
+      ]),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       dni: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      // birthday: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
     });
+
+    /*$(() => {
+      $('#birthday').birthday({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1920:2021',
+        onSelect: (dateText) => {
+          this.birthday.setValue(dateText);
+        }
+      });
+    });*/
   }
 
   signup() {
@@ -58,6 +95,7 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.address = this.signupForm.get('address').value;
     // this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
     this.signupRequestPayload.sex = this.signupForm.get('sex').value;
+    this.signupRequestPayload.role = this.signupForm.get('role').value;
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {
@@ -71,4 +109,8 @@ export class SignupComponent implements OnInit {
 
   onDateSelection($event: Event) {
   }
+
+  /*get birthday() {
+    return this.signupForm.get('birthday');
+  }*/
 }
