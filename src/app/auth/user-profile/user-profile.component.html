@@ -4,21 +4,14 @@
     <div class="mb-3">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills">
-      <ngb-tab title="Search Professionals">
-      </ngb-tab>
-      <ngb-tab title="View Appointments">
-      </ngb-tab>
-      <ngb-tab title="Add Pet">
-        <ng-template ngbTabContent>
-          <a routerLink="register-pet">CLICK HERE TO ADD PET!!!!!!!!!!!!!!!!!!!!!!</a>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="Attach medical studies">
-      </ngb-tab>
-      <ngb-tab title="Modify profile">
-      </ngb-tab>
-    </ngb-tabset>
+    <div class="d-flex justify-content-center">
+      <ng-container class="custom-tab-content flex-column flex-md-row">
+        <button class="btn btn-1 btn-neutral" type="button">Search Professionals</button>
+        <button class="btn btn-1 btn-neutral" type="button" routerLink="register-pet">Add Pet</button>
+        <button class="btn btn-1 btn-neutral" type="button">Attach Medical Studies</button>
+        <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
+      </ng-container>
+    </div>
   </div>
 </div>
 <div class="row justify-content-center">
@@ -27,16 +20,14 @@
     <div class="mb-3">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills">
-      <ngb-tab title="Link Receptionist">
-      </ngb-tab>
-      <ngb-tab title="View Patients">
-      </ngb-tab>
-      <ngb-tab title="View Calendar">
-      </ngb-tab>
-      <ngb-tab title="Modify profile">
-      </ngb-tab>
-    </ngb-tabset>
+    <div class="d-flex justify-content-center">
+      <ng-container class="custom-tab-content flex-column flex-md-row">
+        <button class="btn btn-1 btn-neutral" type="button">Link Receptionist</button>
+        <button class="btn btn-1 btn-neutral" type="button">View Patients</button>
+        <button class="btn btn-1 btn-neutral" type="button">View Calendar</button>
+        <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
+      </ng-container>
+    </div>
   </div>
 </div>
 <div class="row justify-content-center">
@@ -45,11 +36,11 @@
     <div class="mb-3">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <ngb-tabset [justify]="'center'" class="custom-tab-content flex-column flex-md-row" type="pills">
-      <ngb-tab title="View Professionals Appointments">
-      </ngb-tab>
-      <ngb-tab title="Modify profile">
-      </ngb-tab>
-    </ngb-tabset>
+    <div class="d-flex justify-content-center">
+      <ng-container class="custom-tab-content flex-column flex-md-row">
+        <button class="btn btn-1 btn-neutral" type="button">View Appointments</button>
+        <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
+      </ng-container>
+    </div>
   </div>
 </div>
