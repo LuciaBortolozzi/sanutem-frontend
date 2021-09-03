@@ -27,6 +27,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {FooterComponent} from './footer/footer.component';
 import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
+import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
     ViewPostComponent,
     UserProfileComponent,
     FooterComponent,
-    FinalTouchComponent
+    FinalTouchComponent,
+    RegisterPetComponent
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,12 @@ export class SignupComponent implements OnInit {
       birthday: '',
       sex: '',
       role: '',
-      license_number: ''
+      blood_type: '',
+      medical_history: '',
+      surgeries: '',
+      medicines: '',
+      license_number: '',
+      specialization: ''
     };
   }
 
@@ -96,6 +101,12 @@ export class SignupComponent implements OnInit {
     // this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
     this.signupRequestPayload.sex = this.signupForm.get('sex').value;
     this.signupRequestPayload.role = this.signupForm.get('role').value;
+    this.signupRequestPayload.blood_type = this.signupForm.get('blood_type').value;
+    this.signupRequestPayload.medical_history = this.signupForm.get('medical_history').value;
+    this.signupRequestPayload.surgeries = this.signupForm.get('surgeries').value;
+    this.signupRequestPayload.medicines = this.signupForm.get('medicines').value;
+    this.signupRequestPayload.license_number = this.signupForm.get('license_number').value;
+    this.signupRequestPayload.specialization = this.signupForm.get('specialization').value;
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {

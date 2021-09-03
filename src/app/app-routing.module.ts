@@ -10,11 +10,13 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import {AuthGuard} from './auth/auth.guard';
 import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
+import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'view-post/:id', component: ViewPostComponent},
   {path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/register-pet', component: RegisterPetComponent, canActivate: [AuthGuard]},
   {path: 'list-subreddits', component: ListSubredditsComponent},
   {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},

@@ -163,7 +163,52 @@
                     </label>
                   </div>
                 </div>
-                <div *ngIf="signupForm.get('role').valid" class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PATIENT'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Blood Type" type="text" id="blood_type"
+                           [formControlName]="'blood_type'"
+                           name="blood_type" autofocus>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PATIENT'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Medical History" type="text" id="medical_history"
+                              [formControlName]="'medical_history'"
+                              name="medical_history" autofocus></textarea>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PATIENT'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Surgeries" type="text" id="surgeries"
+                              [formControlName]="'surgeries'"
+                              name="surgeries" autofocus></textarea>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PATIENT'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Medicines" type="text" id="medicines"
+                              [formControlName]="'medicines'"
+                              name="medicines" autofocus></textarea>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -171,6 +216,17 @@
                     <input class="form-control" placeholder="License Number" type="text" id="license_number"
                            [formControlName]="'license_number'"
                            name="license_number" autofocus>
+                  </div>
+                </div>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Specialization" type="text" id="specialization"
+                           [formControlName]="'specialization'"
+                           name="specialization" autofocus>
                   </div>
                 </div>
                 <div class="text-center">
