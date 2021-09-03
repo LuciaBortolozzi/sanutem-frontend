@@ -1,3 +1,5 @@
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+
 export interface SignupRequestPayload {
   username: string;
   password: string;
@@ -6,6 +8,9 @@ export interface SignupRequestPayload {
   lastName: string;
   dni: string;
   address: string;
-  // birthday: Date;
+  birthday: string;       // NgbDate;
   sex: string;
+  role: string;
+  license_number: string;
+  // terms: boolean;
 }
