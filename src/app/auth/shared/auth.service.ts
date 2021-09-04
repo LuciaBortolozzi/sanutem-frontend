@@ -6,6 +6,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
+import {Users} from '../user-profile/user-profile.component';
 
 @Injectable({
   providedIn: 'root'
@@ -82,5 +83,9 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
+  }
+
+  goToUserProfile(username:any){
+    return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-profile/${username}/`);
   }
 }

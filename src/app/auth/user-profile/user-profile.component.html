@@ -1,11 +1,12 @@
+<div  >
 <div class="row justify-content-center">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="roleUser === 'ROLE_PATIENT'">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <div class="d-flex justify-content-center">
-      <ng-container class="custom-tab-content flex-column flex-md-row">
+    <div class="d-flex justify-content-center" *ngIf="roleUser === 'ROLE_PATIENT'">
+      <ng-container class="custom-tab-content flex-column flex-md-row" >
         <button class="btn btn-1 btn-neutral" type="button">Search Professionals</button>
         <button class="btn btn-1 btn-neutral" type="button" routerLink="register-pet">Add Pet</button>
         <button class="btn btn-1 btn-neutral" type="button">Attach Medical Studies</button>
@@ -17,10 +18,10 @@
 <div class="row justify-content-center">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="roleUser === 'ROLE_PROFESSIONAL'">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" *ngIf="roleUser === 'ROLE_PROFESSIONAL'">
       <ng-container class="custom-tab-content flex-column flex-md-row">
         <button class="btn btn-1 btn-neutral" type="button">Link Receptionist</button>
         <button class="btn btn-1 btn-neutral" type="button">View Patients</button>
@@ -33,14 +34,15 @@
 <div class="row justify-content-center">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="roleUser === 'ROLE_RECEPTIONIST'">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center"  *ngIf="roleUser === 'ROLE_RECEPTIONIST'">
       <ng-container class="custom-tab-content flex-column flex-md-row">
         <button class="btn btn-1 btn-neutral" type="button">View Appointments</button>
         <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
       </ng-container>
     </div>
   </div>
+</div>
 </div>
