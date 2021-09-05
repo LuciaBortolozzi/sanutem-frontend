@@ -7,6 +7,7 @@ import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
 import {Users} from '../user-profile/user-profile.component';
+import {RegisterRequestPayload} from '../register-pet/register-pet-request.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class AuthService {
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
     return this.httpClient.post('http://localhost:8080/api/auth/signup', signupRequestPayload, { responseType: 'text' });
+  }
+
+  registerPet(registerRequestPayload: RegisterRequestPayload): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/auth/registerPet', registerRequestPayload, { responseType: 'text' });
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
