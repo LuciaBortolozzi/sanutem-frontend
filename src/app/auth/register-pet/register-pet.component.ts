@@ -11,19 +11,22 @@ import {RegisterRequestPayload} from './register-pet-request.payload';
   styleUrls: ['./register-pet.component.css']
 })
 export class RegisterPetComponent implements OnInit {
+  nameUser: string;
   petForm: any;
   focus: boolean;
   focus1: boolean;
   registerRequestPayload: RegisterRequestPayload;
 
   constructor(private authService: AuthService, private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService, private activatedRoute: ActivatedRoute,) {
+    this.nameUser = this.activatedRoute.snapshot.params.name;
     this.registerRequestPayload = {
       name: '',
       species: '',
       breed: '',
       // birthday: '',
-      sex: ''
+      sex: '',
+      nameUser:''
     };
   }
 
@@ -48,6 +51,7 @@ export class RegisterPetComponent implements OnInit {
     this.registerRequestPayload.breed = this.petForm.get('breed').value;
     // this.registerRequestPayload.birthday = this.petForm.get('birthday').value;
     this.registerRequestPayload.sex = this.petForm.get('sex').value;
+    this.registerRequestPayload.nameUser = this.nameUser;
 
     this.authService.registerPet(this.registerRequestPayload)
       .subscribe(data => {
