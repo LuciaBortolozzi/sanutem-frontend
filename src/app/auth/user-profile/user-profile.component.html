@@ -1,11 +1,12 @@
-<div class="row justify-content-center">
+<div  >
+<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PATIENT'">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
     <div class="mb-3">
       <small class="text-uppercase font-weight-bold">Welcome <b>{{name}}</b>.<br/></small>
     </div>
     <div class="d-flex justify-content-center">
-      <ng-container class="custom-tab-content flex-column flex-md-row">
+      <ng-container class="custom-tab-content flex-column flex-md-row" >
         <button class="btn btn-1 btn-neutral" type="button">Search Professionals</button>
         <button class="btn btn-1 btn-neutral" type="button" routerLink="register-pet">Add Pet</button>
         <button class="btn btn-1 btn-neutral" type="button">Attach Medical Studies</button>
@@ -14,7 +15,7 @@
     </div>
   </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PROFESSIONAL'">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
     <div class="mb-3">
@@ -30,7 +31,7 @@
     </div>
   </div>
 </div>
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_RECEPTIONIST'">
   <div class="col-lg-6 mt-5 mt-lg-0">
     <!-- Menu -->
     <div class="mb-3">
@@ -43,4 +44,5 @@
       </ng-container>
     </div>
   </div>
+</div>
 </div>

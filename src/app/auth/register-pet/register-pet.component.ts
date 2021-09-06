@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../shared/auth.service';
+import {ToastrService} from 'ngx-toastr';
+import {RegisterRequestPayload} from './register-pet-request.payload';
 
 @Component({
   selector: 'app-register-pet',
@@ -8,11 +11,23 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./register-pet.component.css']
 })
 export class RegisterPetComponent implements OnInit {
+  nameUser: string;
   petForm: any;
   focus: boolean;
   focus1: boolean;
+  registerRequestPayload: RegisterRequestPayload;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private authService: AuthService, private router: Router,
+              private toastr: ToastrService, private activatedRoute: ActivatedRoute,) {
+    this.nameUser = this.activatedRoute.snapshot.params.name;
+    this.registerRequestPayload = {
+      name: '',
+      species: '',
+      breed: '',
+      // birthday: '',
+      sex: '',
+      nameUser:''
+    };
   }
 
   ngOnInit(): void {
@@ -31,6 +46,21 @@ export class RegisterPetComponent implements OnInit {
 
   registerPet() {
 
+    this.registerRequestPayload.name = this.petForm.get('name').value;
+    this.registerRequestPayload.species = this.petForm.get('species').value;
+    this.registerRequestPayload.breed = this.petForm.get('breed').value;
+    // this.registerRequestPayload.birthday = this.petForm.get('birthday').value;
+    this.registerRequestPayload.sex = this.petForm.get('sex').value;
+    this.registerRequestPayload.nameUser = this.nameUser;
+
+    this.authService.registerPet(this.registerRequestPayload)
+      .subscribe(data => {
+        this.router.navigate(['/login'],
+          {queryParams: {registered: 'true'}});
+      }, error => {
+        console.log(error);
+        this.toastr.error('Registration Failed! Please try again');
+      });
   }
 
   onDateSelection($event: Event) {

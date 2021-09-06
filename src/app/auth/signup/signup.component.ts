@@ -76,6 +76,12 @@ export class SignupComponent implements OnInit {
       birthday: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),
+      blood_type: new FormControl('', Validators.required),
+      medical_history: new FormControl('', Validators.required),
+      surgeries: new FormControl('', Validators.required),
+      medicines: new FormControl('', Validators.required),
+      license_number: new FormControl('', Validators.required),
+      specialization: new FormControl('', Validators.required),
     });
 
     /*$(() => {
