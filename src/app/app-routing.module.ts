@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
-import { HomeComponent } from './home/home.component';
-import { CreatePostComponent } from './post/create-post/create-post.component';
-import { CreateSubredditComponent } from './subreddit/create-subreddit/create-subreddit.component';
-import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subreddits.component';
-import { ViewPostComponent } from './post/view-post/view-post.component';
-import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import {SignupComponent} from './auth/signup/signup.component';
+import {LoginComponent} from './auth/login/login.component';
+import {HomeComponent} from './home/home.component';
+import {CreatePostComponent} from './post/create-post/create-post.component';
+import {CreateSubredditComponent} from './subreddit/create-subreddit/create-subreddit.component';
+import {ListSubredditsComponent} from './subreddit/list-subreddits/list-subreddits.component';
+import {ViewPostComponent} from './post/view-post/view-post.component';
+import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {AuthGuard} from './auth/auth.guard';
-import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
 import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
+import {SettingsComponent} from './auth/settings/settings.component';
+import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},
   {path: 'sign-up', component: SignupComponent},
-  {path: 'final-touch', component: FinalTouchComponent},
+  {path: 'settings/:name', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'modify-profile/:name', component: ModifyProfileComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 

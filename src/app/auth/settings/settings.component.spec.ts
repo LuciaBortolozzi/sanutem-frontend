@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {FinalTouchComponent} from './final-touch.component';
+import {SettingsComponent} from './settings.component';
 
-describe('FinalTouchComponent', () => {
-  let component: FinalTouchComponent;
-  let fixture: ComponentFixture<FinalTouchComponent>;
+describe('SettingsComponent', () => {
+  let component: SettingsComponent;
+  let fixture: ComponentFixture<SettingsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FinalTouchComponent]
+      declarations: [SettingsComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FinalTouchComponent);
+    fixture = TestBed.createComponent(SettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

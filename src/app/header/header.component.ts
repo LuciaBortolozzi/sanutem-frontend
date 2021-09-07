@@ -31,4 +31,8 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
   }
+
+  goToSettings() {
+    this.router.navigateByUrl('/settings/' + this.username);
+  }
 }

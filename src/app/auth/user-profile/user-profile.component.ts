@@ -11,17 +11,18 @@ export class Users{
 
     public id:string,
     public dni:string,
-    public firstName:string,
-    public lastName:string,
-    public username:string,
-    public email:string,
-    public sex:string,
-    public birthday:string,
-    public password:string,
-    public created:string,
-    public enabled:string,
-    public role:string = null,
-    public homeAddress:string){}
+    public firstName: string,
+    public lastName: string,
+    public username: string,
+    public email: string,
+    public sex: string,
+    public birthday: string,
+    public password: string,
+    public created: string,
+    public enabled: string,
+    public role: string = null,
+    public address: string) {
+  }
 }
 
 @Component({
@@ -64,5 +65,4 @@ export class UserProfileComponent implements OnInit {
       // this.router.navigateByUrl('/user-profile/' + this.username);
     });
   }
-
 }
