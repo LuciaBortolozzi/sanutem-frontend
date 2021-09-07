@@ -18,7 +18,7 @@ export class RegisterPetComponent implements OnInit {
   registerRequestPayload: RegisterRequestPayload;
 
   constructor(private authService: AuthService, private router: Router,
-              private toastr: ToastrService, private activatedRoute: ActivatedRoute,) {
+              private toastr: ToastrService, private activatedRoute: ActivatedRoute) {
     this.nameUser = this.activatedRoute.snapshot.params.name;
     this.registerRequestPayload = {
       name: '',
@@ -55,8 +55,9 @@ export class RegisterPetComponent implements OnInit {
 
     this.authService.registerPet(this.registerRequestPayload)
       .subscribe(data => {
-        this.router.navigate(['/login'],
+        this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});
+        this.toastr.success('Registration Successful');
       }, error => {
         console.log(error);
         this.toastr.error('Registration Failed! Please try again');
