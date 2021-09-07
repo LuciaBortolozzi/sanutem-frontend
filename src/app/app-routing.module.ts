@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'view-post/:id', component: ViewPostComponent},
   {path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/update', component: ModifyProfileComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/register-pet', component: RegisterPetComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/manage-pets', component: ManagePetsComponent, canActivate: [AuthGuard]},
   {path: 'list-subreddits', component: ListSubredditsComponent},
@@ -25,7 +26,6 @@ const routes: Routes = [
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},
   {path: 'sign-up', component: SignupComponent},
   {path: 'settings/:name', component: SettingsComponent, canActivate: [AuthGuard]},
-  {path: 'modify-profile/:name', component: ModifyProfileComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 
