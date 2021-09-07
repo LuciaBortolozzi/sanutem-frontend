@@ -1,0 +1,49 @@
+<div class="col-sm-9">
+  <h1 class="display-2 mb-0">My Pets</h1>
+</div>
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div class="row justify-content-center">
+  <div class="col-lg-6 mt-5 mt-lg-0">
+    <div class="d-flex justify-content-center">
+      <ng-container class="custom-tab-content flex-column flex-md-row">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Birthday</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Medical History</th>
+            <th>Surgeries</th>
+            <th>Medicines</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let pet of pets">
+            <td>{{pet.name}}</td>
+            <td>{{pet.sex}}</td>
+            <td>{{pet.birthday | date}}</td>
+            <td>{{pet.species}}</td>
+            <td>{{pet.breed}}</td>
+            <td>{{pet.medicalHistory}}</td>
+            <td>{{pet.surgeries}}</td>
+            <td>{{pet.medicines}}</td>
+            <td>
+              <button (click)="updatePet(pet.id)" class="btn btn-success">Update</button>
+            </td>
+            <td>
+              <button (click)="deletePet(pet.id)" class="btn btn-warning">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </ng-container>
+    </div>
+  </div>
+  <!--<div class="row">
+    <button (click)="addPet()" class="btn btn-success">Add</button>
+  </div>-->
+</div>
