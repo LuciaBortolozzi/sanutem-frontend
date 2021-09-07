@@ -12,12 +12,14 @@ import {AuthGuard} from './auth/auth.guard';
 import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 import {SettingsComponent} from './auth/settings/settings.component';
 import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
+import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'view-post/:id', component: ViewPostComponent},
   {path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/register-pet', component: RegisterPetComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/manage-pets', component: ManagePetsComponent, canActivate: [AuthGuard]},
   {path: 'list-subreddits', component: ListSubredditsComponent},
   {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},

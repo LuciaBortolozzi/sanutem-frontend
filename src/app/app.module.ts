@@ -29,6 +29,7 @@ import {FooterComponent} from './footer/footer.component';
 import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 import {SettingsComponent} from './auth/settings/settings.component';
 import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
+import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.compo
     FooterComponent,
     RegisterPetComponent,
     SettingsComponent,
-    ModifyProfileComponent
+    ModifyProfileComponent,
+    ManagePetsComponent
   ],
   imports: [
     BrowserModule,
