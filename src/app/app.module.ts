@@ -26,8 +26,9 @@ import {ViewPostComponent} from './post/view-post/view-post.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {FooterComponent} from './footer/footer.component';
-import {FinalTouchComponent} from './auth/final-touch/final-touch.component';
 import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
+import {SettingsComponent} from './auth/settings/settings.component';
+import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
     ViewPostComponent,
     UserProfileComponent,
     FooterComponent,
-    FinalTouchComponent,
-    RegisterPetComponent
+    RegisterPetComponent,
+    SettingsComponent,
+    ModifyProfileComponent
   ],
   imports: [
     BrowserModule,
