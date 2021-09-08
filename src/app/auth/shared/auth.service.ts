@@ -39,6 +39,11 @@ export class AuthService {
     return this.httpClient.post('http://localhost:8080/api/auth/registerPet', registerRequestPayload, {responseType: 'text'});
   }
 
+  deleteUser(nameUser:any){
+    return this.httpClient.delete(`http://localhost:8080/api/auth/settings/${nameUser}/`);
+  }
+
+
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
     return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/login',
       loginRequestPayload).pipe(map(data => {
