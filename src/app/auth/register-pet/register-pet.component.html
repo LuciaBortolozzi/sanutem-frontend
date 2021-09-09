@@ -82,6 +82,39 @@
                     </label>
                   </div>
                 </div>
+                <div class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Medical History" type="text" id="medical_history"
+                              [formControlName]="'medical_history'"
+                              name="medical_history" autofocus></textarea>
+                  </div>
+                </div>
+                <div class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Surgeries" type="text" id="surgeries"
+                              [formControlName]="'surgeries'"
+                              name="surgeries" autofocus></textarea>
+                  </div>
+                </div>
+                <div class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Medicines" type="text" id="medicines"
+                              [formControlName]="'medicines'"
+                              name="medicines" autofocus></textarea>
+                  </div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Register</button>
                 </div>
