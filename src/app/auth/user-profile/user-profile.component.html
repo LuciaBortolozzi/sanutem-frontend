@@ -1,49 +1,66 @@
-<div  >
-<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PATIENT'">
-  <div class="col-lg-6 mt-5 mt-lg-0">
-    <!-- Menu -->
-    <div class="col-sm-9">
-      <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
-    </div>
-    <div class="d-flex justify-content-center">
-      <ng-container class="custom-tab-content flex-column flex-md-row">
-        <button class="btn btn-1 btn-neutral" type="button">Search Professionals</button>
-        <button class="btn btn-1 btn-neutral" type="button" routerLink="register-pet">Add Pet</button>
-        <button class="btn btn-1 btn-neutral" type="button" routerLink="manage-pets">Manage Pets</button>
-        <button class="btn btn-1 btn-neutral" type="button">Attach Medical Studies</button>
-        <button class="btn btn-1 btn-neutral" type="button" routerLink="update">Modify Profile</button>
-      </ng-container>
-    </div>
-  </div>
-</div>
-<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PROFESSIONAL'">
-  <div class="col-lg-6 mt-5 mt-lg-0">
-    <!-- Menu -->
-    <div class="col-sm-9">
-      <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
-    </div>
-    <div class="d-flex justify-content-center">
-      <ng-container class="custom-tab-content flex-column flex-md-row">
-        <button class="btn btn-1 btn-neutral" type="button">Link Receptionist</button>
-        <button class="btn btn-1 btn-neutral" type="button">View Patients</button>
-        <button class="btn btn-1 btn-neutral" type="button">View Calendar</button>
-        <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
-      </ng-container>
+<div>
+  <div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PATIENT'">
+    <div class="col-lg-6 mt-5 mt-lg-0">
+      <!-- Menu -->
+      <div class="col-sm-9">
+        <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <ng-container class="custom-tab-content flex-column flex-md-row">
+          <button class="btn btn-1 btn-neutral" type="button">Search Professionals</button>
+          <button class="btn btn-1 btn-neutral" type="button" routerLink="register-pet">Add Pet</button>
+          <button class="btn btn-1 btn-neutral" type="button" routerLink="manage-pets">Manage Pets</button>
+          <button class="btn btn-1 btn-neutral" type="button">Attach Medical Studies</button>
+          <button class="btn btn-1 btn-neutral" type="button" routerLink="update">Modify Profile</button>
+        </ng-container>
+      </div>
     </div>
   </div>
-</div>
-<div class="row justify-content-center" *ngIf="roleUser === 'ROLE_RECEPTIONIST'">
-  <div class="col-lg-6 mt-5 mt-lg-0">
-    <!-- Menu -->
-    <div class="col-sm-9">
-      <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
+  <div class="row justify-content-center" *ngIf="roleUser === 'ROLE_PROFESSIONAL'">
+    <div class="col-lg-6 mt-5 mt-lg-0">
+      <!-- Menu -->
+      <div class="col-sm-9">
+        <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <ng-container class="custom-tab-content flex-column flex-md-row">
+          <button class="btn btn-1 btn-neutral" id="linkRec" type="button">Link Receptionist</button>
+          <button class="btn btn-1 btn-neutral" type="button">View Patients</button>
+          <button class="btn btn-1 btn-neutral" type="button">View Calendar</button>
+          <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
+        </ng-container>
+      </div>
     </div>
-    <div class="d-flex justify-content-center">
-      <ng-container class="custom-tab-content flex-column flex-md-row">
-        <button class="btn btn-1 btn-neutral" type="button">View Appointments</button>
-        <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
-      </ng-container>
+    <div *ngIf="linkRec()">
+
+      <form [formGroup]="linkForm" (ngSubmit)="linkRec()" role="form">
+        <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+            </div>
+            <input class="form-control" placeholder="Receptionist ID" type="text" id="recId"
+                   [formControlName]="'recId'"
+                   name="recId" autofocus required>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-</div>
+
+  <div class="row justify-content-center" *ngIf="roleUser === 'ROLE_RECEPTIONIST'">
+    <div class="col-lg-6 mt-5 mt-lg-0">
+      <!-- Menu -->
+      <div class="col-sm-9">
+        <h1 class="display-2 mb-0">Welcome <b>{{name}}</b>,</h1>
+        <h4 class="display-4 mb-0">Your id is <b class="text-danger">{{id}}</b></h4>
+      </div>
+      <div class="d-flex justify-content-center">
+        <ng-container class="custom-tab-content flex-column flex-md-row">
+          <button class="btn btn-1 btn-neutral" type="button">View Appointments</button>
+          <button class="btn btn-1 btn-neutral" type="button">Modify Profile</button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>

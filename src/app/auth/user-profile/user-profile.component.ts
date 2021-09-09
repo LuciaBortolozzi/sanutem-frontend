@@ -5,6 +5,7 @@ import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import {AuthService} from '../shared/auth.service';
+import {FormGroup} from '@angular/forms';
 
 export class Users{
   constructor(
@@ -36,11 +37,14 @@ export class UserProfileComponent implements OnInit {
   comments: CommentPayload[];
   postLength: number;
   commentLength: number;
-  user : Users;
-  roleUser:string;
+  user: Users;
+  roleUser: string;
+  id: string;
+  focus: boolean;
+  linkForm: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute, private postService: PostService,
-    private commentService: CommentService, private authService: AuthService,) {
+              private commentService: CommentService, private authService: AuthService,) {
     this.name = this.activatedRoute.snapshot.params.name;
 
     this.postService.getAllPostsByUser(this.name).subscribe(data => {
@@ -55,6 +59,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.goToUserProfile();
+    this.getUserProfileData();
   }
 
   goToUserProfile() {
@@ -64,5 +69,17 @@ export class UserProfileComponent implements OnInit {
       this.roleUser = this.user.role;
       // this.router.navigateByUrl('/user-profile/' + this.username);
     });
+  }
+
+  getUserProfileData() {
+    this.authService.getUserProfileData(this.name).subscribe(response => {
+      this.user = response;
+      console.log('email' + this.user.email);
+      this.id = this.user.id;
+    });
+  }
+
+  linkRec(): boolean {
+    return false;
   }
 }
