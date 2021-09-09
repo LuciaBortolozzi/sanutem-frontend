@@ -1,9 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../shared/auth.service';
 import {UpdateRequestPayload} from './modify-profile-request.payload';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+
+export class Users{
+  constructor(
+
+    public id:string,
+    public dni:string,
+    public firstName: string,
+    public lastName: string,
+    public username: string,
+    public email: string,
+    public sex: string,
+    public birthday: string,
+    public password: string,
+    public created: string,
+    public enabled: string,
+    public role: string = null,
+    public address: string) {
+  }
+}
 
 @Component({
   selector: 'app-modify-profile',
@@ -15,10 +34,23 @@ export class ModifyProfileComponent implements OnInit {
   updateForm: FormGroup;
   focus: boolean;
   focus1: boolean;
+  name: string;
 
-  constructor(private authService: AuthService,
+  user : Users;
+  emailUser:string;
+  passwordUser:string;
+  firstNameUser:string;
+  lastNameUser:string;
+  addressUser:string;
+  userNameUser:string;
+  dniUser:string;
+  // birthdayUser:string;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private authService: AuthService,
               private router: Router,
               private toastr: ToastrService) {
+    this.name = this.activatedRoute.snapshot.params.name;
     this.updateProfile = {
       // username: '',
       email: '',
@@ -40,12 +72,13 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserProfileData();
     this.updateForm = new FormGroup({
-      /* username: new FormControl('', [
+      username: new FormControl('', [
          Validators.required,
          Validators.maxLength(10),
          Validators.minLength(5)
-       ]),*/
+       ]),
       email: new FormControl('', [
         Validators.required,
         Validators.email
@@ -57,11 +90,11 @@ export class ModifyProfileComponent implements OnInit {
       ]),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      // dni: new FormControl('', Validators.required),
+      dni: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       birthday: new FormControl('', Validators.required),
-      // sex: new FormControl('', Validators.required),
-      // role: new FormControl('', Validators.required),
+      sex: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
       blood_type: new FormControl('', Validators.required),
       medical_history: new FormControl('', Validators.required),
       surgeries: new FormControl('', Validators.required),
@@ -102,4 +135,22 @@ export class ModifyProfileComponent implements OnInit {
   onDateSelection($event: Event) {
 
   }
+
+    getUserProfileData() {
+      this.authService.getUserProfileData(this.name).subscribe(response => {
+        this.user = response;
+        console.log('email' + this.user.email);
+        this.userNameUser = this.user.username;
+        this.dniUser = this.user.dni;
+        this.emailUser = this.user.email;
+        this.passwordUser = this.user.password;
+        this.firstNameUser = this.user.firstName;
+        this.lastNameUser = this.user.lastName;
+        console.log('direccion' + this.user.address);
+        this.addressUser = this.user.address;
+        // roleUser -> way to avoid some errors in the web console
+        // this.roleUser = this.user.role;
+        // this.router.navigateByUrl('/user-profile/' + this.username);
+      });
+    }
 }

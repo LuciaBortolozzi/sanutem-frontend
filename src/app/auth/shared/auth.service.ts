@@ -49,13 +49,13 @@ export class AuthService {
       loginRequestPayload).pipe(map(data => {
       this.localStorage.store('authenticationToken', data.authenticationToken);
       this.localStorage.store('username', data.username);
-        this.localStorage.store('refreshToken', data.refreshToken);
-        this.localStorage.store('expiresAt', data.expiresAt);
+      this.localStorage.store('refreshToken', data.refreshToken);
+      this.localStorage.store('expiresAt', data.expiresAt);
 
-        this.loggedIn.emit(true);
-        this.username.emit(data.username);
-        return true;
-      }));
+      this.loggedIn.emit(true);
+      this.username.emit(data.username);
+      return true;
+    }));
   }
 
   getJwtToken() {
@@ -107,4 +107,8 @@ export class AuthService {
   goToSettings(username: any) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/settings/${username}/`);
   }
+
+    getUserProfileData(username: any) {
+      return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-data/${username}/`);
+    }
 }

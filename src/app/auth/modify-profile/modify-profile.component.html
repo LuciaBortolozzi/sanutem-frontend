@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="text" id="email"
+                    <input class="form-control" placeholder={{emailUser}} type="text" id="email"
                            [formControlName]="'email'" name="email" required autofocus>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Username" type="text" id="username"
+                    <input class="form-control" placeholder={{userNameUser}}  type="text" id="username"
                            [formControlName]="'username'" name="username" required autofocus disabled>
                   </div>
                 </div>
@@ -41,8 +41,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password" [formControlName]="'password'"
-                           name="password" required>
+                    <input class="form-control" placeholder=password type="password" [formControlName]="'password'"
+                           name="password" required disabled>
                   </div>
                 </div>
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
@@ -50,7 +50,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="First Name" type="text" id="firstName"
+                    <input class="form-control" placeholder={{firstNameUser}} type="text" id="firstName"
                            [formControlName]="'firstName'"
                            name="firstName" autofocus>
                   </div>
@@ -60,7 +60,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Last Name" type="text" id="lastName"
+                    <input class="form-control" placeholder={{lastNameUser}} type="text" id="lastName"
                            [formControlName]="'lastName'"
                            name="lastName" autofocus>
                   </div>
@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="DNI" type="text" id="dni" [formControlName]="'dni'"
+                    <input class="form-control" placeholder={{dniUser}} type="text" id="dni" [formControlName]="'dni'"
                            name="dni" autofocus disabled>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Address" type="text" id="address"
+                    <input class="form-control" placeholder={{addressUser}} type="text" id="address"
                            [formControlName]="'address'"
                            name="address" required autofocus>
                   </div>
