@@ -21,8 +21,9 @@ export class Users{
     public password: string,
     public created: string,
     public enabled: string,
-    public role: string = null,
-    public address: string) {
+    public address: string,
+    public role: string = null
+    ) {
   }
 }
 
@@ -74,7 +75,6 @@ export class UserProfileComponent implements OnInit {
   getUserProfileData() {
     this.authService.getUserProfileData(this.name).subscribe(response => {
       this.user = response;
-      console.log('email' + this.user.email);
       this.id = this.user.id;
     });
   }

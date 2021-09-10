@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{emailUser}} type="text" id="email"
+                    <input class="form-control" value={{emailUser}} type="text" id="email"
                            [formControlName]="'email'" name="email" required autofocus>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{userNameUser}}  type="text" id="username"
+                    <input class="form-control" value={{userNameUser}}  type="text" id="username"
                            [formControlName]="'username'" name="username" required autofocus disabled>
                   </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{firstNameUser}} type="text" id="firstName"
+                    <input class="form-control" value={{firstNameUser}} type="text" id="firstName"
                            [formControlName]="'firstName'"
                            name="firstName" autofocus>
                   </div>
@@ -60,7 +60,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{lastNameUser}} type="text" id="lastName"
+                    <input class="form-control" value={{lastNameUser}} type="text" id="lastName"
                            [formControlName]="'lastName'"
                            name="lastName" autofocus>
                   </div>
@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{dniUser}} type="text" id="dni" [formControlName]="'dni'"
+                    <input class="form-control" value={{dniUser}} type="text" id="dni" [formControlName]="'dni'"
                            name="dni" autofocus disabled>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder={{addressUser}} type="text" id="address"
+                    <input class="form-control" value={{addressUser}} type="text" id="address"
                            [formControlName]="'address'"
                            name="address" required autofocus>
                   </div>
@@ -101,14 +101,14 @@
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="custom-control custom-radio mb-3">
                     <input id="male" name="sex" [formControlName]="'sex'" class="custom-control-input" value="male"
-                           type="radio" disabled>
+                             type="radio" [checked]="sexUser == 'male' ? true : false">
                     <label class="custom-control-label" for="male">
                       <label>Male</label>
                     </label>
                   </div>
                   <div class="custom-control custom-radio mb-3">
                     <input id="female" name="sex" [formControlName]="'sex'" class="custom-control-input" value="female"
-                           type="radio" disabled>
+                           type="radio" [checked]="sexUser == 'female' ? true : false">
                     <label class="custom-control-label" for="female">
                       <label>Female</label>
                     </label>
