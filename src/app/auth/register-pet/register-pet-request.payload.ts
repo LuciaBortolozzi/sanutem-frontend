@@ -6,6 +6,8 @@ export interface RegisterRequestPayload{
   breed: string;
   // birthday: string;
   sex: string;
-  nameUser:string;
-
+  medical_history: string;
+  surgeries: string;
+  medicines: string;
+  nameUser: string;
 }

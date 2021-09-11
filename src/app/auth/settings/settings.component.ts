@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 export class Users {
   constructor(
@@ -26,11 +27,12 @@ export class Users {
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  private name: string;
+  nameUser: string;
   user: Users;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) {
-    this.name = this.activatedRoute.snapshot.params.name;
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
+              private router: Router, private toastr: ToastrService) {
+    this.nameUser = this.activatedRoute.snapshot.params.name;
   }
 
   ngOnInit(): void {
@@ -38,8 +40,20 @@ export class SettingsComponent implements OnInit {
   }
 
   goToSettings() {
-    this.authService.goToSettings(this.name).subscribe(response => {
+    this.authService.goToSettings(this.nameUser).subscribe(response => {
       this.user = response;
     });
+  }
+
+  deleteUser(){
+    this.authService.deleteUser(this.nameUser).subscribe(
+      response=>{
+        this.router.navigate(['/'],
+          {queryParams: {registered: 'true'}});
+        this.toastr.success('Delete Successful');
+      }, error => {
+        console.log(error);
+        this.toastr.error('Delete Failed! Please try again');
+      });
   }
 }

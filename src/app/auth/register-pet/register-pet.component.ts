@@ -12,7 +12,7 @@ import {RegisterRequestPayload} from './register-pet-request.payload';
 })
 export class RegisterPetComponent implements OnInit {
   nameUser: string;
-  petForm: any;
+  petForm: FormGroup;
   focus: boolean;
   focus1: boolean;
   registerRequestPayload: RegisterRequestPayload;
@@ -26,7 +26,10 @@ export class RegisterPetComponent implements OnInit {
       breed: '',
       // birthday: '',
       sex: '',
-      nameUser:''
+      medical_history: '',
+      surgeries: '',
+      medicines: '',
+      nameUser: ''
     };
   }
 
@@ -41,6 +44,9 @@ export class RegisterPetComponent implements OnInit {
       breed: new FormControl('', Validators.required),
       date_of_birth: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
+      medical_history: new FormControl('', Validators.required),
+      surgeries: new FormControl('', Validators.required),
+      medicines: new FormControl('', Validators.required),
     });
   }
 
@@ -51,6 +57,9 @@ export class RegisterPetComponent implements OnInit {
     this.registerRequestPayload.breed = this.petForm.get('breed').value;
     // this.registerRequestPayload.birthday = this.petForm.get('birthday').value;
     this.registerRequestPayload.sex = this.petForm.get('sex').value;
+    this.registerRequestPayload.medical_history = this.petForm.get('medical_history').value;
+    this.registerRequestPayload.surgeries = this.petForm.get('surgeries').value;
+    this.registerRequestPayload.medicines = this.petForm.get('medicines').value;
     this.registerRequestPayload.nameUser = this.nameUser;
 
     this.authService.registerPet(this.registerRequestPayload)

@@ -1,9 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../shared/auth.service';
 import {UpdateRequestPayload} from './modify-profile-request.payload';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+
+export class Users{
+  constructor(
+
+    public id:string,
+    public dni:string,
+    public firstName: string,
+    public lastName: string,
+    public username: string,
+    public email: string,
+    public sex: string,
+    public birthday: string,
+    public password: string,
+    public created: string,
+    public enabled: string,
+    public role: string = null,
+    public address: string) {
+  }
+}
 
 @Component({
   selector: 'app-modify-profile',
@@ -15,12 +34,25 @@ export class ModifyProfileComponent implements OnInit {
   updateForm: FormGroup;
   focus: boolean;
   focus1: boolean;
+  name: string;
+  user : Users;
+  public emailUser:string;
+  public passwordUser:string;
+  public firstNameUser:string;
+  public lastNameUser:string;
+  public addressUser:string;
+  public userNameUser:string;
+  public dniUser:string;
+  public sexUser:string;
+  // birthdayUser:string;
 
-  constructor(private authService: AuthService,
+  constructor(private activatedRoute: ActivatedRoute,
+              private authService: AuthService,
               private router: Router,
               private toastr: ToastrService) {
+    this.name = this.activatedRoute.snapshot.params.name;
     this.updateProfile = {
-      // username: '',
+      username: '',
       email: '',
       password: '',
       firstName: '',
@@ -28,7 +60,7 @@ export class ModifyProfileComponent implements OnInit {
       // dni: '',
       address: '',
       birthday: '',
-      // sex: '',
+      sex: '',
       // role: '',
       blood_type: '',
       medical_history: '',
@@ -40,12 +72,13 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserProfileData();
     this.updateForm = new FormGroup({
-      /* username: new FormControl('', [
-         Validators.required,
-         Validators.maxLength(10),
-         Validators.minLength(5)
-       ]),*/
+      username: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(10),
+        Validators.minLength(5)
+      ]),
       email: new FormControl('', [
         Validators.required,
         Validators.email
@@ -57,11 +90,11 @@ export class ModifyProfileComponent implements OnInit {
       ]),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      // dni: new FormControl('', Validators.required),
+      dni: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       birthday: new FormControl('', Validators.required),
-      // sex: new FormControl('', Validators.required),
-      // role: new FormControl('', Validators.required),
+      sex: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
       blood_type: new FormControl('', Validators.required),
       medical_history: new FormControl('', Validators.required),
       surgeries: new FormControl('', Validators.required),
@@ -72,15 +105,41 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   update() {
-    this.updateProfile.email = this.updateForm.get('email').value;
+    if (this.updateForm.get('email').value === '')
+    {
+      this.updateProfile.email =this.emailUser;
+    }else{
+      this.updateProfile.email = this.updateForm.get('email').value;
+    }
     // this.updateProfile.username = this.updateForm.get('username').value;
+    this.updateProfile.username = this.name;
     this.updateProfile.password = this.updateForm.get('password').value;
-    this.updateProfile.firstName = this.updateForm.get('firstName').value;
-    this.updateProfile.lastName = this.updateForm.get('lastName').value;
+    if (this.updateForm.get('firstName').value === '')
+    {
+      this.updateProfile.firstName =this.firstNameUser;
+    }else{
+      this.updateProfile.firstName = this.updateForm.get('firstName').value;
+    }
+    if (this.updateForm.get('lastName').value === '')
+    {
+      this.updateProfile.lastName =this.lastNameUser;
+    }else{
+      this.updateProfile.lastName = this.updateForm.get('lastName').value;
+    }
     // this.updateProfile.dni = this.updateForm.get('dni').value;
-    this.updateProfile.address = this.updateForm.get('address').value;
+    if (this.updateForm.get('address').value === '')
+    {
+      this.updateProfile.address =this.addressUser;
+    }else{
+      this.updateProfile.address = this.updateForm.get('address').value;
+    }
     // this.updateProfile.birthday = this.updateForm.get('birthday').value;
-    // this.updateProfile.sex = this.updateForm.get('sex').value;
+    if (this.updateForm.get('sex').value === '')
+    {
+      this.updateProfile.sex =this.sexUser;
+    }else{
+      this.updateProfile.sex = this.updateForm.get('sex').value;
+    }
     // this.updateProfile.role = this.updateForm.get('role').value;
     this.updateProfile.blood_type = this.updateForm.get('blood_type').value;
     this.updateProfile.medical_history = this.updateForm.get('medical_history').value;
@@ -101,5 +160,22 @@ export class ModifyProfileComponent implements OnInit {
 
   onDateSelection($event: Event) {
 
+  }
+
+  getUserProfileData() {
+    this.authService.getUserProfileData(this.name).subscribe(response => {
+      this.user = response;
+      this.userNameUser = this.user.username;
+      this.dniUser = this.user.dni;
+      this.emailUser = this.user.email;
+      this.passwordUser = this.user.password;
+      this.firstNameUser = this.user.firstName;
+      this.lastNameUser = this.user.lastName;
+      this.addressUser = this.user.address;
+      this.sexUser = this.user.sex;
+      // roleUser -> way to avoid some errors in the web console
+      // this.roleUser = this.user.role;
+      // this.router.navigateByUrl('/user-profile/' + this.username);
+    });
   }
 }
