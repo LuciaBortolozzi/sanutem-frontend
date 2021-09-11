@@ -32,7 +32,8 @@ export class AuthService {
   }
 
   update(updateRequestPayload: UpdateRequestPayload): Observable<any> {
-    return this.httpClient.put(`http://localhost:8080/api/auth/update/${this.username}`, updateRequestPayload, {responseType: 'text'});
+    return this.httpClient.post('http://localhost:8080/api/auth/update/',
+      updateRequestPayload, {responseType: 'text'});
   }
 
   registerPet(registerRequestPayload: RegisterRequestPayload): Observable<any> {
