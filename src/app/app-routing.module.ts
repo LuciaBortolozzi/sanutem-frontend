@@ -13,6 +13,8 @@ import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 import {SettingsComponent} from './auth/settings/settings.component';
 import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
 import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
+import {SearchComponent} from './search/search.component';
+import {SchedulerComponent} from './scheduler/scheduler.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,6 +23,9 @@ const routes: Routes = [
   {path: 'user-profile/:name/update', component: ModifyProfileComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/register-pet', component: RegisterPetComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/manage-pets', component: ManagePetsComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/search', component: SearchComponent, canActivate: [AuthGuard]},
+  // {path: 'user-profile/:name/search/:professional/schedule', component: SchedulerComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/search/schedule', component: SchedulerComponent, canActivate: [AuthGuard]},
   {path: 'list-subreddits', component: ListSubredditsComponent},
   {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},

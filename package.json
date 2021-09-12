@@ -22,7 +22,9 @@
     "@angular/router": "~9.1.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.3",
     "@tinymce/tinymce-angular": "^3.5.0",
+    "angular-calendar": "^0.28.28",
     "bootstrap": "^4.4.1",
+    "date-fns": "^2.16.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.3"

@@ -30,6 +30,10 @@ import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 import {SettingsComponent} from './auth/settings/settings.component';
 import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
 import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
+import {SearchComponent} from './search/search.component';
+import {SchedulerComponent} from './scheduler/scheduler.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -52,7 +56,9 @@ import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
     RegisterPetComponent,
     SettingsComponent,
     ModifyProfileComponent,
-    ManagePetsComponent
+    ManagePetsComponent,
+    SearchComponent,
+    SchedulerComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,8 @@ import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
     FontAwesomeModule,
     EditorModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory})
   ],
   providers: [
     {
