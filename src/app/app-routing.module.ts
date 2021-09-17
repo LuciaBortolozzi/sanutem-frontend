@@ -15,6 +15,7 @@ import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.compo
 import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
 import {SearchComponent} from './search/search.component';
 import {SchedulerComponent} from './scheduler/scheduler.component';
+import {LinkReceptionistComponent} from './auth/link-receptionist/link-receptionist.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'user-profile/:name/search', component: SearchComponent, canActivate: [AuthGuard]},
   // {path: 'user-profile/:name/search/:professional/schedule', component: SchedulerComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/search/schedule', component: SchedulerComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/link-receptionist', component: LinkReceptionistComponent, canActivate: [AuthGuard]},
   {path: 'list-subreddits', component: ListSubredditsComponent},
   {path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard]},
   {path: 'create-subreddit', component: CreateSubredditComponent, canActivate: [AuthGuard]},

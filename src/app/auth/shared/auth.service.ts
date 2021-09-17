@@ -9,6 +9,7 @@ import {map, tap} from 'rxjs/operators';
 import {Users} from '../user-profile/user-profile.component';
 import {RegisterRequestPayload} from '../register-pet/register-pet-request.payload';
 import {UpdateRequestPayload} from '../modify-profile/modify-profile-request.payload';
+import {LinkReceptionistRequestPayload} from '../link-receptionist/link-receptionist-request-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class AuthService {
 
   registerPet(registerRequestPayload: RegisterRequestPayload): Observable<any> {
     return this.httpClient.post('http://localhost:8080/api/auth/registerPet', registerRequestPayload, {responseType: 'text'});
+  }
+
+  linkReceptionist(linkReceptionistRequestPayload: LinkReceptionistRequestPayload): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/auth/link-receptionist', linkReceptionistRequestPayload, {responseType: 'text'});
   }
 
   deleteUser(nameUser: any) {
