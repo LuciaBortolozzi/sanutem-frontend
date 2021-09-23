@@ -34,6 +34,7 @@ import {SearchComponent} from './search/search.component';
 import {SchedulerComponent} from './scheduler/scheduler.component';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import { LinkReceptionistComponent } from './auth/link-receptionist/link-receptionist.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     ModifyProfileComponent,
     ManagePetsComponent,
     SearchComponent,
-    SchedulerComponent
+    SchedulerComponent,
+    LinkReceptionistComponent
   ],
   imports: [
     BrowserModule,
