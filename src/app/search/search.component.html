@@ -5,59 +5,35 @@
       <h1 class="display-2 mb-0">Search</h1>
     </div>
     <br/><br/><br/>
-    <form (ngSubmit)="search()" role="form">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="specialization" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-          Specialization
-        </button>
-        <div class="dropdown-menu" aria-labelledby="specialization">
-          <a class="dropdown-item" (click)="getSelectedDropdown('Allergy and immunology')">Allergy and immunology</a>
-          <a class="dropdown-item">Anesthesiology</a>
-          <a class="dropdown-item">Dermatology</a>
-          <a class="dropdown-item">Diagnostic radiology</a>
-          <a class="dropdown-item">Emergency medicine</a>
-          <a class="dropdown-item">Family medicine</a>
-          <a class="dropdown-item">Internal medicine</a>
-          <a class="dropdown-item">Medical genetics</a>
-          <a class="dropdown-item">Neurology</a>
-          <a class="dropdown-item">Obstetrics and gynecology</a>
-          <a class="dropdown-item">Ophthalmology</a>
-          <a class="dropdown-item">Pathology</a>
-          <a class="dropdown-item">Pediatrics</a>
-          <a class="dropdown-item">Physical medicine and rehabilitation</a>
-          <a class="dropdown-item">Preventive medicine</a>
-          <a class="dropdown-item">Psychiatry</a>
-          <a class="dropdown-item">Radiation oncology</a>
-          <a class="dropdown-item">Surgery</a>
-          <a class="dropdown-item">Urology</a>
-          <a class="dropdown-item">Veterinary</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="location" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-          Provincia
-        </button>
-        <div class="dropdown-menu" aria-labelledby="location">
-          <a class="dropdown-item">Capital Federal</a>
-          <a class="dropdown-item">Cordoba</a>
-          <a class="dropdown-item">Santa Fe</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="health_insurance" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-          Health Insurance
-        </button>
-        <div class="dropdown-menu" aria-labelledby="health_insurance">
-          <a class="dropdown-item">Medicus</a>
-          <a class="dropdown-item">OSDE</a>
-          <a class="dropdown-item">Swiss Medical</a>
-        </div>
-      </div>
-      <button (click)="search()" class="btn btn-primary my-4" type="submit">Search</button>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
+      <style type="text/css">
+        .option {     font-family: 'Fira Sans', sans-serif; }
+      </style>
+    </head>
+    <form [formGroup]="searchForm" (ngSubmit)="search()" role="form" method="get">
+      <select formControlName="selectSpecializations" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Specialization</option>
+        <option *ngFor="let specialization of specializations" [ngValue]="specialization" id="Specialization">{{specialization}}</option>
+      </select>
+      <select formControlName="selectProvinces" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Province</option>
+        <option *ngFor="let province of provinces" [ngValue]="province" id="Province">{{province}}</option>
+      </select>
+      <select formControlName="selectHealthInsurance" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Health Insurance</option>
+        <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance" id="HealthInsurance">{{healthInsurance}}</option>
+      </select>
     </form>
+      <input (click)="search()" class="btn btn-primary my-4" type="submit" value="search"/>
+  </div>
+  <div>
+    <tr *ngFor="let use of user">
+      <td>{{use.firstName}}</td>
+      <td>{{use.lastName}}</td>
+    </tr>
   </div>
   <br/><br/><br/>
 </div>

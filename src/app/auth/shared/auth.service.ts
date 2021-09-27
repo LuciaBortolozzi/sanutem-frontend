@@ -118,4 +118,19 @@ export class AuthService {
   getUserProfileData(username: any) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-data/${username}/`);
   }
+
+  getProvinces() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/provinces-data/`);
+  }
+
+  getSpecializations() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/specializations-data/`);
+  }
+  getHealthInsurances() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/healthInsurances-data/`);
+  }
+
+  search(specialization:any, province:any, healthInsurance:any) {
+    return this.httpClient.get<Users[]>(`http://localhost:8080/api/auth/search/${specialization}/${province}/${healthInsurance}/`);
+  }
 }
