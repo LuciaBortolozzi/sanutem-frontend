@@ -9,6 +9,7 @@ import {map, tap} from 'rxjs/operators';
 import {Users} from '../user-profile/user-profile.component';
 import {RegisterRequestPayload} from '../register-pet/register-pet-request.payload';
 import {UpdateRequestPayload} from '../modify-profile/modify-profile-request.payload';
+import {LinkReceptionistRequestPayload} from '../link-receptionist/link-receptionist-request-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class AuthService {
 
   registerPet(registerRequestPayload: RegisterRequestPayload): Observable<any> {
     return this.httpClient.post('http://localhost:8080/api/auth/registerPet', registerRequestPayload, {responseType: 'text'});
+  }
+
+  linkReceptionist(linkReceptionistRequestPayload: LinkReceptionistRequestPayload): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/auth/link-receptionist', linkReceptionistRequestPayload, {responseType: 'text'});
   }
 
   deleteUser(nameUser: any) {
@@ -112,5 +117,20 @@ export class AuthService {
 
   getUserProfileData(username: any) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-data/${username}/`);
+  }
+
+  getProvinces() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/provinces-data/`);
+  }
+
+  getSpecializations() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/specializations-data/`);
+  }
+  getHealthInsurances() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/healthInsurances-data/`);
+  }
+
+  search(specialization:any, province:any, healthInsurance:any) {
+    return this.httpClient.get<Users[]>(`http://localhost:8080/api/auth/search/${specialization}/${province}/${healthInsurance}/`);
   }
 }

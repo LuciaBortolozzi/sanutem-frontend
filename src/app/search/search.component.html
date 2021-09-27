@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6 mt-5 mt-lg-0">
+    <div class="col-sm-9">
+      <br/><br/>
+      <h1 class="display-2 mb-0">Search</h1>
+    </div>
+    <br/><br/><br/>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
+      <style type="text/css">
+        .option {     font-family: 'Fira Sans', sans-serif; }
+      </style>
+    </head>
+    <form [formGroup]="searchForm" (ngSubmit)="search()" role="form" method="get">
+      <select formControlName="selectSpecializations" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Specialization</option>
+        <option *ngFor="let specialization of specializations" [ngValue]="specialization" id="Specialization">{{specialization}}</option>
+      </select>
+      <select formControlName="selectProvinces" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Province</option>
+        <option *ngFor="let province of provinces" [ngValue]="province" id="Province">{{province}}</option>
+      </select>
+      <select formControlName="selectHealthInsurance" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+        <option [ngValue]="null" disabled>Health Insurance</option>
+        <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance" id="HealthInsurance">{{healthInsurance}}</option>
+      </select>
+    </form>
+      <input (click)="search()" class="btn btn-primary my-4" type="submit" value="search"/>
+  </div>
+  <div>
+    <tr *ngFor="let use of user">
+      <td>{{use.firstName}}</td>
+      <td>{{use.lastName}}</td>
+    </tr>
+  </div>
+  <br/><br/><br/>
+</div>
+<br/><br/><br/>
