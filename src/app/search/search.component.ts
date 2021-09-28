@@ -5,11 +5,10 @@ import {AuthService} from '../auth/shared/auth.service';
 import {SearchRequestPayload} from './search-request.payload';
 import {ToastrService} from 'ngx-toastr';
 
-export class Users{
+export class Users {
   constructor(
-
-    public id:string,
-    public dni:string,
+    public id: string,
+    public dni: string,
     public firstName: string,
     public lastName: string,
     public username: string,
@@ -31,18 +30,19 @@ export class Users{
 })
 export class SearchComponent implements OnInit {
   private name: string;
-  provinces : string[];
-  specializations : string[];
-  healthInsurances : string[];
+  provinces: string[];
+  specializations: string[];
+  healthInsurances: string[];
   searchForm: FormGroup;
   selectSpecializations: FormGroup;
   selectProvinces: FormGroup;
   selectHealthInsurance: FormGroup;
   searchProfessional: SearchRequestPayload;
-  user : Users[];
+  users: Users[];
+  private searchedFlag = false;
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
-              private router: Router, private toastr: ToastrService, private fb:FormBuilder) {
+              private router: Router, private toastr: ToastrService, private fb: FormBuilder) {
     this.name = this.activatedRoute.snapshot.params.name;
     this.searchProfessional = {
       specializationsName: '',
@@ -73,9 +73,10 @@ export class SearchComponent implements OnInit {
     this.authService.search(this.searchProfessional.specializationsName,
       this.searchProfessional.provincesName, this.searchProfessional.healthInsurancesName)
       .subscribe(response => {
-        this.user = response;
-        console.log(this.user);
+        this.users = response;
+        console.log(this.users);
       });
+    this.searchedFlag = true;
   }
 
   getProvinces() {
@@ -94,5 +95,13 @@ export class SearchComponent implements OnInit {
     this.authService.getHealthInsurances().subscribe(response => {
       this.healthInsurances = response;
     });
+  }
+
+  searched(): boolean {
+    return this.searchedFlag;
+  }
+
+  schedule(usernameProf: string) {
+    this.router.navigate([`${usernameProf}/schedule`]);
   }
 }
