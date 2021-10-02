@@ -17,5 +17,7 @@ export interface SignupRequestPayload {
   medicines: string;
   license_number: string;
   specialization: string;
+  province: string;
+  healthInsurances: string;
   // terms: boolean;
 }

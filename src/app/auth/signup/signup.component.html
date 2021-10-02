@@ -107,6 +107,12 @@
                            name="address" required autofocus>
                   </div>
                 </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <select formControlName="selectProvinces" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                    <option [ngValue]="null" disabled selected>Province</option>
+                    <option *ngFor="let province of provinces" [ngValue]="province" id="Province">{{province}}</option>
+                  </select>
+                </div>
                 <!-- Datepicker -->
                 <div class="form-group mb-3">
                   <div class="form-group" [ngClass]="{'focused':focus1===true}">
@@ -220,23 +226,30 @@
                 </div>
                 <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
                      [ngClass]="{'focused':focus===true}">
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Specialization" type="text" id="specialization"
-                           [formControlName]="'specialization'"
-                           name="specialization" autofocus>
+                  <div class="selected">
+                    <select formControlName="selectSpecializations" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                      <option [ngValue]="null" disabled selected>Specialization</option>
+                      <option *ngFor="let specialization of specializations" [ngValue]="specialization" id="Specialization">{{specialization}}</option>
+                    </select>
                   </div>
                 </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Sign up</button>
+                <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
+                     [ngClass]="{'focused':focus===true}">
+                  <div>
+                    <select formControlName="selectHealthInsurance" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                      <option [ngValue]="null" disabled selected>Health Insurance</option>
+                      <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance" id="HealthInsurance">{{healthInsurance}}</option>
+                    </select>
+                  </div>
                 </div>
-              </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <!--            <div class="col-6">-->
+                 <div class="text-center">
+                   <button type="submit" class="btn btn-primary my-4">Sign up</button>
+                 </div>
+               </form>
+             </div>
+           </div>
+           <div class="row mt-3">
+             <!--            <div class="col-6">-->
             <!--              <a  class="text-light">-->
             <!--                <small>Forgot password?</small>-->
             <!--              </a>-->
