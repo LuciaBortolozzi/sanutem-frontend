@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {SignupRequestPayload} from './signup-request.payload';
 import {AuthService} from '../shared/auth.service';
 import {ToastrService} from 'ngx-toastr';
@@ -20,19 +20,15 @@ export class SignupComponent implements OnInit {
   focus: boolean;
   focus1: boolean;
   model: any;
-
-  /*  username: FormControl;
-    email: FormControl;
-    password: FormControl;
-    firstName: FormControl;
-    lastName: FormControl;
-    dni: FormControl;
-    address: FormControl;
-    birthday: FormControl;
-    sex: FormControl;*/
+  provinces : string[];
+  specializations : string[];
+  healthInsurances : string[];
+  selectSpecializations: FormGroup;
+  selectProvinces: FormGroup;
+  selectHealthInsurance: FormGroup;
 
   constructor(private authService: AuthService, private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService, private fb:FormBuilder) {
     this.signupRequestPayload = {
       username: '',
       email: '',
@@ -49,12 +45,18 @@ export class SignupComponent implements OnInit {
       surgeries: '',
       medicines: '',
       license_number: '',
-      specialization: ''
+      specialization: '',
+      province: '',
+      healthInsurances: ''
     };
   }
 
   ngOnInit() {
-    this.signupForm = new FormGroup({
+    this.getProvinces();
+    this.getSpecializations();
+    this.getHealthInsurances();
+
+    this.signupForm = this.fb.group({
       username: new FormControl('', [
         Validators.required,
         Validators.maxLength(10),
@@ -81,7 +83,9 @@ export class SignupComponent implements OnInit {
       surgeries: new FormControl('', Validators.required),
       medicines: new FormControl('', Validators.required),
       license_number: new FormControl('', Validators.required),
-      specialization: new FormControl('', Validators.required),
+      selectSpecializations:[null],
+      selectProvinces:[null],
+      selectHealthInsurance:[null]
     });
 
     /*$(() => {
@@ -112,7 +116,9 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.surgeries = this.signupForm.get('surgeries').value;
     this.signupRequestPayload.medicines = this.signupForm.get('medicines').value;
     this.signupRequestPayload.license_number = this.signupForm.get('license_number').value;
-    this.signupRequestPayload.specialization = this.signupForm.get('specialization').value;
+    this.signupRequestPayload.province = this.signupForm.get('selectProvinces').value;
+    this.signupRequestPayload.specialization = this.signupForm.get('selectSpecializations').value;
+    this.signupRequestPayload.healthInsurances = this.signupForm.get('selectHealthInsurance').value;
 
     this.authService.signup(this.signupRequestPayload)
       .subscribe(data => {
@@ -125,6 +131,24 @@ export class SignupComponent implements OnInit {
   }
 
   onDateSelection($event: Event) {
+  }
+
+  getProvinces() {
+    this.authService.getProvinces().subscribe(response => {
+      this.provinces = response;
+    });
+  }
+
+  getSpecializations() {
+    this.authService.getSpecializations().subscribe(response => {
+      this.specializations = response;
+    });
+  }
+
+  getHealthInsurances() {
+    this.authService.getHealthInsurances().subscribe(response => {
+      this.healthInsurances = response;
+    });
   }
 
   /*get birthday() {

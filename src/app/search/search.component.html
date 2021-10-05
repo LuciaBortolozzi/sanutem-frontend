@@ -4,37 +4,56 @@
       <br/><br/>
       <h1 class="display-2 mb-0">Search</h1>
     </div>
-    <br/><br/><br/>
-    <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap" rel="stylesheet">
-      <style type="text/css">
-        .option {     font-family: 'Fira Sans', sans-serif; }
-      </style>
-    </head>
+    <br/><br/>
     <form [formGroup]="searchForm" (ngSubmit)="search()" role="form" method="get">
-      <select formControlName="selectSpecializations" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+      <select formControlName="selectSpecializations" class="btn btn-secondary dropdown-toggle">
         <option [ngValue]="null" disabled>Specialization</option>
-        <option *ngFor="let specialization of specializations" [ngValue]="specialization" id="Specialization">{{specialization}}</option>
+        <option class="dropdown-item" *ngFor="let specialization of specializations" [ngValue]="specialization"
+                id="Specialization">{{specialization}}</option>
       </select>
-      <select formControlName="selectProvinces" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+      <select formControlName="selectProvinces" class="btn btn-secondary dropdown-toggle">
         <option [ngValue]="null" disabled>Province</option>
-        <option *ngFor="let province of provinces" [ngValue]="province" id="Province">{{province}}</option>
+        <option class="dropdown-item" *ngFor="let province of provinces" [ngValue]="province"
+                id="Province">{{province}}</option>
       </select>
-      <select formControlName="selectHealthInsurance" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+      <select formControlName="selectHealthInsurance" class="btn btn-secondary dropdown-toggle">
         <option [ngValue]="null" disabled>Health Insurance</option>
-        <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance" id="HealthInsurance">{{healthInsurance}}</option>
+        <option class="dropdown-item" *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance"
+                id="HealthInsurance">{{healthInsurance}}</option>
       </select>
     </form>
-      <input (click)="search()" class="btn btn-primary my-4" type="submit" value="search"/>
+    <input (click)="search()" class="btn btn-primary my-4" type="submit" value="search"/>
+
+    <div class="col-lg-6 mt-5 mt-lg-0" *ngIf="searched()">
+      <div class="col-sm-9">
+        <br/><br/>
+        <h1 class="display-3 mb-0">Professionals</h1>
+      </div>
+      <br/>
+      <div class="d-flex justify-content-center">
+        <ng-container class="custom-tab-content flex-column flex-md-row">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Address</th>
+              <th>Schedule</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.address}}</td>
+              <td>
+                <button (click)="schedule(user.username)" class="btn btn-success">Schedule</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+    </div>
   </div>
-  <div>
-    <tr *ngFor="let use of user">
-      <td>{{use.firstName}}</td>
-      <td>{{use.lastName}}</td>
-    </tr>
-  </div>
-  <br/><br/><br/>
 </div>
-<br/><br/><br/>
