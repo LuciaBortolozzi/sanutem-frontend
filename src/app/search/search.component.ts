@@ -102,6 +102,6 @@ export class SearchComponent implements OnInit {
   }
 
   schedule(usernameProf: string) {
-    this.router.navigate([`${usernameProf}/schedule`]);
+    this.router.navigate([`/user-profile/${this.name}/search/${usernameProf}/schedule`]);
   }
 }

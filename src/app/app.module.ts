@@ -36,6 +36,8 @@ import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {LinkReceptionistComponent} from './auth/link-receptionist/link-receptionist.component';
 import {AvailabilityComponent} from './auth/availability/availability.component';
+import {MedicalHistoryComponent} from './medical-history/medical-history.component';
+import {MedicalTestsComponent} from './medical-tests/medical-tests.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import {AvailabilityComponent} from './auth/availability/availability.component'
     SearchComponent,
     SchedulerComponent,
     LinkReceptionistComponent,
-    AvailabilityComponent
+    AvailabilityComponent,
+    MedicalHistoryComponent,
+    MedicalTestsComponent
   ],
   imports: [
     BrowserModule,
