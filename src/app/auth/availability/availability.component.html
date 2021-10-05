@@ -1,0 +1,191 @@
+<main>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="col-sm-9">
+          <br/><br/>
+          <h1 class="display-2 mb-0">Professional Availability</h1>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <form [formGroup]="availabilityForm" (ngSubmit)="availability()" role="form">
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="mb-3">
+                    <small class="text-uppercase font-weight-bold">Month</small>
+                  </div>
+                  <select [formControlName]="'selectMonths'" class="btn btn-secondary dropdown-toggle">
+                    <option [ngValue]="null" disabled>Month</option>
+                    <option class="dropdown-item" *ngFor="let month of months" [ngValue]="month"
+                            id="Month">{{month}}</option>
+                  </select>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="mb-3">
+                    <small class="text-uppercase font-weight-bold">Days</small>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="monday"
+                           value="monday" type="checkbox">
+                    <label class="custom-control-label" for="monday">
+                      <span>Monday</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="thursday"
+                           value="thursday" type="checkbox">
+                    <label class="custom-control-label" for="thursday">
+                      <span>Thursday</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="wednesday"
+                           value="wednesday" type="checkbox">
+                    <label class="custom-control-label" for="wednesday">
+                      <span>Wednesday</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="tuesday"
+                           value="tuesday" type="checkbox">
+                    <label class="custom-control-label" for="tuesday">
+                      <span>Tuesday</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="friday"
+                           value="friday" type="checkbox">
+                    <label class="custom-control-label" for="friday">
+                      <span>Friday</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'days'" name="days" id="saturday"
+                           value="saturday" type="checkbox">
+                    <label class="custom-control-label" for="saturday">
+                      <span>Saturday</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                  <div class="mb-3">
+                    <small class="text-uppercase font-weight-bold">Hours</small>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_1"
+                           value="range_1" type="checkbox">
+                    <label class="custom-control-label" for="range_1">
+                      <span>07:00 - 08:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_2"
+                           value="range_2" type="checkbox">
+                    <label class="custom-control-label" for="range_2">
+                      <span>08:00 - 09:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_3"
+                           value="range_3" type="checkbox">
+                    <label class="custom-control-label" for="range_3">
+                      <span>09:00 - 10:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_4"
+                           value="range_4" type="checkbox">
+                    <label class="custom-control-label" for="range_4">
+                      <span>10:00 - 11:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_5"
+                           value="range_5" type="checkbox">
+                    <label class="custom-control-label" for="range_5">
+                      <span>11:00 - 12:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_6"
+                           value="range_6" type="checkbox">
+                    <label class="custom-control-label" for="range_6">
+                      <span>12:00 - 13:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_7"
+                           value="range_7" type="checkbox">
+                    <label class="custom-control-label" for="range_7">
+                      <span>13:00 - 14:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_8"
+                           value="range_8" type="checkbox">
+                    <label class="custom-control-label" for="range_8">
+                      <span>14:00 - 15:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_9"
+                           value="range_9" type="checkbox">
+                    <label class="custom-control-label" for="range_9">
+                      <span>15:00 - 16:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_10"
+                           value="range_10" type="checkbox">
+                    <label class="custom-control-label" for="range_10">
+                      <span>16:00 - 17:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_11"
+                           value="range_11" type="checkbox">
+                    <label class="custom-control-label" for="range_11">
+                      <span>17:00 - 18:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_12"
+                           value="range_12" type="checkbox">
+                    <label class="custom-control-label" for="range_12">
+                      <span>18:00 - 19:00</span>
+                    </label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" [formControlName]="'hours'" name="hours" id="range_13"
+                           value="range_13" type="checkbox">
+                    <label class="custom-control-label" for="range_13">
+                      <span>19:00 - 20:00</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

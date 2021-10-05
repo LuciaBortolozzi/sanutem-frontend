@@ -10,6 +10,7 @@ import {Users} from '../user-profile/user-profile.component';
 import {RegisterRequestPayload} from '../register-pet/register-pet-request.payload';
 import {UpdateRequestPayload} from '../modify-profile/modify-profile-request.payload';
 import {LinkReceptionistRequestPayload} from '../link-receptionist/link-receptionist-request-payload';
+import {AvailabilityRequestPayload} from '../availability/availability-request-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class AuthService {
 
   linkReceptionist(linkReceptionistRequestPayload: LinkReceptionistRequestPayload): Observable<any> {
     return this.httpClient.post('http://localhost:8080/api/auth/link-receptionist', linkReceptionistRequestPayload, {responseType: 'text'});
+  }
+
+  availability(availabilityRequestPayload: AvailabilityRequestPayload): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/auth/availability', availabilityRequestPayload, {responseType: 'text'});
   }
 
   deleteUser(nameUser: any) {
@@ -126,11 +131,16 @@ export class AuthService {
   getSpecializations() {
     return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/specializations-data/`);
   }
+
   getHealthInsurances() {
     return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/healthInsurances-data/`);
   }
 
-  search(specialization:any, province:any, healthInsurance:any) {
+  getMonths() {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/months-data/`);
+  }
+
+  search(specialization: any, province: any, healthInsurance: any) {
     return this.httpClient.get<Users[]>(`http://localhost:8080/api/auth/search/${specialization}/${province}/${healthInsurance}/`);
   }
 }

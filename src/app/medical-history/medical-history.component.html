@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6 mt-5 mt-lg-0">
+    <div class="col-sm-9">
+      <br/><br/>
+      <h1 class="display-2 mb-0">Medical History</h1>
+    </div>
+    <br/><br/>
+    <form [formGroup]="searchForm" (ngSubmit)="search()" role="form" method="get">
+      <select formControlName="selectPatient" class="btn btn-secondary dropdown-toggle">
+        <option [ngValue]="null" disabled>Patient</option>
+        <option class="dropdown-item" *ngFor="let patient of patients" [ngValue]="patient"
+                id="Patient">{{patient}}</option>
+      </select>
+    </form>
+    <br/>
+    <input (click)="search()" class="btn btn-primary my-4" type="submit" value="Search"/>
+    <input (click)="add()" class="btn btn-primary my-4" type="submit" value="Add"/>
+    <br/><br/>
+    <div class="col-lg-6 mt-5 mt-lg-0" *ngIf="searchedFlag">
+      <div class="col-sm-9">
+        <br/><br/>
+        <h1 class="display-3 mb-0">Patient's medical history</h1>
+      </div>
+      <br/>
+      <div class="d-flex justify-content-center">
+        <ng-container class="custom-tab-content flex-column flex-md-row">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let medH of medicalHistory">
+              <td>{{medH.date}}</td>
+              <td>{{medH.details}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+    </div>
+
+    <div *ngIf="addFlag" class="container">
+      <div class="alert alert-warning" *ngIf="medHistoryForm.dirty && medHistoryForm.invalid">Enter valid values</div>
+      <div class="alert alert-warning" *ngIf="medHistoryForm.dirty && date.invalid">Enter valid Date</div>
+      <div class="alert alert-warning" *ngIf="medHistoryForm.dirty && details.invalid">Enter at least 5 characters in
+        Details
+      </div>
+
+      <form (ngSubmit)="!medHistoryForm.invalid && saveMedHistory()" #medHistoryForm="ngForm">
+        <fieldset class="form-group">
+          <label>Date</label>
+          <input type="date" #date="ngModel"
+                 [ngModel]="medHistory.date | date:'yyyy-MM-dd' "
+                 (ngModelChange)="medHistory.date = $event"
+                 class="form-control" name="date" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Details</label>
+          <textarea #details="ngModel"
+                    [(ngModel)]="medHistory.details" class="form-control"
+                    name="details" required="required" minlength="5"></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-primary my-4">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

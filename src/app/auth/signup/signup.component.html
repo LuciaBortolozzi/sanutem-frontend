@@ -108,7 +108,7 @@
                   </div>
                 </div>
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
-                  <select formControlName="selectProvinces" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                  <select formControlName="selectProvinces" class="btn btn-secondary dropdown-toggle">
                     <option [ngValue]="null" disabled selected>Province</option>
                     <option *ngFor="let province of provinces" [ngValue]="province" id="Province">{{province}}</option>
                   </select>
@@ -227,18 +227,20 @@
                 <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
                      [ngClass]="{'focused':focus===true}">
                   <div class="selected">
-                    <select formControlName="selectSpecializations" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                    <select formControlName="selectSpecializations" class="btn btn-secondary dropdown-toggle">
                       <option [ngValue]="null" disabled selected>Specialization</option>
-                      <option *ngFor="let specialization of specializations" [ngValue]="specialization" id="Specialization">{{specialization}}</option>
+                      <option *ngFor="let specialization of specializations" [ngValue]="specialization"
+                              id="Specialization">{{specialization}}</option>
                     </select>
                   </div>
                 </div>
                 <div *ngIf="signupForm.get('role').value === 'ROLE_PROFESSIONAL'" class="form-group mb-3"
                      [ngClass]="{'focused':focus===true}">
                   <div>
-                    <select formControlName="selectHealthInsurance" style="height: 40px; border-radius: .375rem; width: 150px; border: none; background-color: lightgray; font-family: 'Open Sans', sans-serif; font-weight: bold; margin-right: 10px;">
+                    <select formControlName="selectHealthInsurance" class="btn btn-secondary dropdown-toggle">
                       <option [ngValue]="null" disabled selected>Health Insurance</option>
-                      <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance" id="HealthInsurance">{{healthInsurance}}</option>
+                      <option *ngFor="let healthInsurance of healthInsurances" [ngValue]="healthInsurance"
+                              id="HealthInsurance">{{healthInsurance}}</option>
                     </select>
                   </div>
                 </div>
