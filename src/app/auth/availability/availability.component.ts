@@ -41,9 +41,9 @@ export class AvailabilityComponent implements OnInit {
     this.availabilityForm = this.fb.group({
       selectMonths:[null],
       dayMonday: new FormControl('', Validators.required),
-      dayThursday: new FormControl('', Validators.required),
-      dayWednesday: new FormControl('', Validators.required),
       dayTuesday: new FormControl('', Validators.required),
+      dayWednesday: new FormControl('', Validators.required),
+      dayThursday: new FormControl('', Validators.required),
       dayFriday: new FormControl('', Validators.required),
       daySaturday: new FormControl('', Validators.required),
       hours_range_1: new FormControl('', Validators.required),
@@ -65,9 +65,9 @@ export class AvailabilityComponent implements OnInit {
   availability() {
     this.availabilityRequestPayload.month = this.availabilityForm.get('selectMonths').value;
     this.availabilityRequestPayload.days[0] = this.availabilityForm.get('dayMonday').value;
-    this.availabilityRequestPayload.days[1] = this.availabilityForm.get('dayThursday').value;
+    this.availabilityRequestPayload.days[1] = this.availabilityForm.get('dayTuesday').value;
     this.availabilityRequestPayload.days[2] = this.availabilityForm.get('dayWednesday').value;
-    this.availabilityRequestPayload.days[3] = this.availabilityForm.get('dayTuesday').value;
+    this.availabilityRequestPayload.days[3] = this.availabilityForm.get('dayThursday').value;
     this.availabilityRequestPayload.days[4] = this.availabilityForm.get('dayFriday').value;
     this.availabilityRequestPayload.days[5] = this.availabilityForm.get('daySaturday').value;
     this.availabilityRequestPayload.hours[0] = this.availabilityForm.get('hours_range_1').value;
