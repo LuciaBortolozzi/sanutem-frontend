@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth/shared/auth.service';
+import {AuthService} from '../shared/auth.service';
 import {SearchRequestPayload} from './search-request.payload';
 import {ToastrService} from 'ngx-toastr';
 

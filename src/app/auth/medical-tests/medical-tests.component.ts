@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UploadFileService} from 'src/app/services/upload-file.service';
+import {UploadFileService} from 'src/app/auth/services/upload-file.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
