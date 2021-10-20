@@ -44,7 +44,6 @@ export class SearchComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
               private router: Router, private toastr: ToastrService, private fb: FormBuilder) {
     this.name = this.activatedRoute.snapshot.params.name;
-    console.log()
     this.searchProfessional = {
       specializationsName: '',
       provincesName: '',
