@@ -151,7 +151,8 @@ export class ModifyProfileComponent implements OnInit {
     this.authService.update(this.updateProfile)
       .subscribe(data => {
         this.router.navigate(['/'],
-          {queryParams: {registered: 'true'}});
+            {queryParams: {registered: 'true'}});
+          this.toastr.success('Update successful!');
       }, error => {
         console.log(error);
         this.toastr.error('Update Failed! Please try again');

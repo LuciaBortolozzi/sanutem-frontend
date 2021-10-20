@@ -12,17 +12,9 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './token-interceptor';
-import { HomeComponent } from './home/home.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {PostTileComponent} from './shared/post-tile/post-tile.component';
-import {VoteButtonComponent} from './shared/vote-button/vote-button.component';
-import {SideBarComponent} from './shared/side-bar/side-bar.component';
-import {SubredditSideBarComponent} from './shared/subreddit-side-bar/subreddit-side-bar.component';
-import {CreateSubredditComponent} from './subreddit/create-subreddit/create-subreddit.component';
-import {CreatePostComponent} from './post/create-post/create-post.component';
-import {ListSubredditsComponent} from './subreddit/list-subreddits/list-subreddits.component';
+import {HomeComponent} from './home/home.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EditorModule} from '@tinymce/tinymce-angular';
-import {ViewPostComponent} from './post/view-post/view-post.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UserProfileComponent} from './auth/user-profile/user-profile.component';
 import {FooterComponent} from './footer/footer.component';
@@ -30,14 +22,15 @@ import {RegisterPetComponent} from './auth/register-pet/register-pet.component';
 import {SettingsComponent} from './auth/settings/settings.component';
 import {ModifyProfileComponent} from './auth/modify-profile/modify-profile.component';
 import {ManagePetsComponent} from './auth/manage-pets/manage-pets.component';
-import {SearchComponent} from './search/search.component';
-import {SchedulerComponent} from './scheduler/scheduler.component';
+import {SearchComponent} from './auth/search/search.component';
+import {SchedulerComponent} from './auth/scheduler/scheduler.component';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {LinkReceptionistComponent} from './auth/link-receptionist/link-receptionist.component';
 import {AvailabilityComponent} from './auth/availability/availability.component';
-import {MedicalHistoryComponent} from './medical-history/medical-history.component';
-import {MedicalTestsComponent} from './medical-tests/medical-tests.component';
+import {MedicalHistoryComponent} from './auth/medical-history/medical-history.component';
+import {MedicalTestsComponent} from './auth/medical-tests/medical-tests.component';
+import {CalendarComponent} from './auth/calendar/calendar.component';
 
 
 @NgModule({
@@ -47,14 +40,6 @@ import {MedicalTestsComponent} from './medical-tests/medical-tests.component';
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    PostTileComponent,
-    VoteButtonComponent,
-    SideBarComponent,
-    SubredditSideBarComponent,
-    CreateSubredditComponent,
-    CreatePostComponent,
-    ListSubredditsComponent,
-    ViewPostComponent,
     UserProfileComponent,
     FooterComponent,
     RegisterPetComponent,
@@ -66,7 +51,8 @@ import {MedicalTestsComponent} from './medical-tests/medical-tests.component';
     LinkReceptionistComponent,
     AvailabilityComponent,
     MedicalHistoryComponent,
-    MedicalTestsComponent
+    MedicalTestsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

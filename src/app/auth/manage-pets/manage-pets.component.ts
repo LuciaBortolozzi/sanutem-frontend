@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PetsDataService} from '../service/pets-data.service';
+import {PetsDataService} from '../services/pets-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 export class Pets {

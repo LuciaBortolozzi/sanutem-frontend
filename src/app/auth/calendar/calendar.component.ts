@@ -26,25 +26,26 @@ import {ActivatedRoute} from '@angular/router';
 
 const colors: any = {
   red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
+    primary: '#ad2120',
+    secondary: '#FAE2E3',
   },
   blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
+    primary: '#0e90ff',
+    secondary: '#D0E8FF',
   },
   yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
+    primary: '#e2bc08',
+    secondary: '#FDF0BA',
   },
 };
 
 @Component({
-  selector: 'app-scheduler',
-  templateUrl: './scheduler.component.html',
-  styleUrls: ['./scheduler.component.css']
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.css']
 })
-export class SchedulerComponent {
+export class CalendarComponent {
+
   @ViewChild('modalContent', {static: true}) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -191,4 +192,5 @@ export class SchedulerComponent {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
 }
