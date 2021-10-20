@@ -30,7 +30,7 @@ import {LinkReceptionistComponent} from './auth/link-receptionist/link-reception
 import {AvailabilityComponent} from './auth/availability/availability.component';
 import {MedicalHistoryComponent} from './auth/medical-history/medical-history.component';
 import {MedicalTestsComponent} from './auth/medical-tests/medical-tests.component';
-import {CalendarComponent} from './calendar/calendar.component';
+import {CalendarComponent} from './auth/calendar/calendar.component';
 
 
 @NgModule({

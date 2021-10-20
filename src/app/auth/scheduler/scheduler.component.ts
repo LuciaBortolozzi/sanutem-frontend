@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentsDataService} from '../services/appointments-data.service';
+import {ToastrService} from 'ngx-toastr';
+import {SchedulerRequestPayload} from './scheduler-request.payload';
 
 export class Appointments {
   constructor(
@@ -22,13 +24,22 @@ export class Appointments {
 export class SchedulerComponent implements OnInit {
   message: string;
   appointments: Appointments[];
-  appointmentSelected: Appointments;
+  scheduleAppointment: SchedulerRequestPayload;
   nameUser: string;
   userNameProfessional: string;
 
-  constructor(private appointmentsService: AppointmentsDataService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private appointmentsService: AppointmentsDataService, private router: Router,
+              private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
     this.nameUser = this.activatedRoute.snapshot.params.name;
-    // this.userNameProfessional =
+    this.userNameProfessional = this.activatedRoute.snapshot.paramMap.get('professional');
+    this.scheduleAppointment = {
+      idAppointments: 0,
+      date: '',
+      hour: '',
+      freeAppointment: false,
+      userNamePatient: '',
+      userNameProfessional: ''
+    };
   }
 
   ngOnInit(): void {
@@ -43,9 +54,22 @@ export class SchedulerComponent implements OnInit {
     );
   }
 
-  schedule(userNameProfessional: string, idAppointments: number) {
-    this.appointmentSelected.freeAppointment = false;
-    this.appointmentSelected.userNamePatient = this.nameUser;
-    // updateAppointment(userNameProfessional, idAppointments);
+  schedule(appointment: Appointments) {
+    appointment.userNamePatient = this.nameUser;
+    this.scheduleAppointment.idAppointments = appointment.idAppointments;
+    this.scheduleAppointment.date = appointment.date;
+    this.scheduleAppointment.hour = appointment.hour;
+    this.scheduleAppointment.userNamePatient = appointment.userNamePatient;
+    this.scheduleAppointment.userNameProfessional = appointment.userNameProfessional;
+    this.scheduleAppointment.freeAppointment = appointment.freeAppointment;
+    this.appointmentsService.scheduleAppointment(this.scheduleAppointment)
+      .subscribe(data => {
+        this.router.navigate(['/'],
+          {queryParams: {registered: 'true'}});
+        this.toastr.success('Schedule successful!');
+      }, error => {
+        console.log(error);
+        this.toastr.error('Schedule Failed! Please try again');
+      });
   }
 }

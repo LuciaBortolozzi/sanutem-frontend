@@ -19,10 +19,10 @@
           <tbody>
           <tr *ngFor="let appointment of appointments">
 
-            <td>{{appointment.date}}</td>
-            <td>{{appointment.hour}}</td>
-            <td>
-              <button (click)="schedule(appointment.userNameProfessional, appointment.idAppointments)"
+            <td *ngIf="appointment.freeAppointment == true">{{appointment.date}}</td>
+            <td *ngIf="appointment.freeAppointment == true">{{appointment.hour}}</td>
+            <td *ngIf="appointment.freeAppointment == true">
+              <button (click)="schedule(appointment)"
                       class="btn btn-success">Schedule
               </button>
             </td>
