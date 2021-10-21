@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Appointments} from '../model/model';
 import {AppointmentsDataService} from '../services/appointments-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DeleteAppointmentRequestPayload} from './delete-appointment-request.payload';
+import {CancelAppointmentRequestPayload} from './cancel-appointment-request.payload';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -14,7 +14,7 @@ export class ModifyCalendarComponent implements OnInit {
   message: string;
   appointments: Appointments[];
   userNameReceptionist: string;
-  deleteAppointment: DeleteAppointmentRequestPayload;
+  cancelAppointment: CancelAppointmentRequestPayload;
 
   constructor(private appointmentsService: AppointmentsDataService, private router: Router,
               private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
@@ -33,14 +33,14 @@ export class ModifyCalendarComponent implements OnInit {
     );
   }
 
-  delete(appointment: Appointments) {
-    this.deleteAppointment.idAppointments = appointment.idAppointments;
-    this.deleteAppointment.date = appointment.date;
-    this.deleteAppointment.hour = appointment.hour;
-    this.deleteAppointment.userNamePatient = appointment.userNamePatient;
-    this.deleteAppointment.userNameProfessional = appointment.userNameProfessional;
-    this.deleteAppointment.freeAppointment = appointment.freeAppointment;
-    this.appointmentsService.deleteAppointment(this.userNameReceptionist, this.deleteAppointment)
+  cancel(appointment: Appointments) {
+    this.cancelAppointment.idAppointments = appointment.idAppointments;
+    this.cancelAppointment.date = appointment.date;
+    this.cancelAppointment.hour = appointment.hour;
+    this.cancelAppointment.userNamePatient = appointment.userNamePatient;
+    this.cancelAppointment.userNameProfessional = appointment.userNameProfessional;
+    this.cancelAppointment.freeAppointment = appointment.freeAppointment;
+    this.appointmentsService.cancelAppointment(this.userNameReceptionist, this.cancelAppointment)
       .subscribe(response => {
         this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});

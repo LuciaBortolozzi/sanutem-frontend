@@ -1,4 +1,4 @@
-export interface DeleteAppointmentRequestPayload {
+export interface CancelAppointmentRequestPayload {
   idAppointments: number;
   date: string;
   hour: string;

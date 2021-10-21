@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {SchedulerRequestPayload} from '../scheduler/scheduler-request.payload';
 import {Appointments} from '../model/model';
-import {DeleteAppointmentRequestPayload} from '../modify-calendar/delete-appointment-request.payload';
+import {CancelAppointmentRequestPayload} from '../modify-calendar/cancel-appointment-request.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,9 @@ export class AppointmentsDataService {
     return this.http.get<Appointments[]>(`http://localhost:8080/api/auth/user-profile/${receptionist}/modify-calendar`);
   }
 
-  deleteAppointment(receptionist: string, appointment: DeleteAppointmentRequestPayload) {
-    return this.http.delete(`http://localhost:8080/api/auth/user-profile/${receptionist}/modify-calendar/${appointment.idAppointments}`);
+  cancelAppointment(receptionist: string, appointment: CancelAppointmentRequestPayload) {
+    return this.http.post(`http://localhost:8080/api/auth/user-profile/${receptionist}/modify-calendar/${appointment.idAppointments}`,
+      appointment, {responseType: 'text'});
   }
 
   scheduleAppointment(appointment: SchedulerRequestPayload) {

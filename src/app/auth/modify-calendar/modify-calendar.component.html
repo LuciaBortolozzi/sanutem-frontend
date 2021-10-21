@@ -14,7 +14,7 @@
             <th>Date</th>
             <th>Hour</th>
             <th>Patient</th>
-            <th>Delete</th>
+            <th>Cancel</th>
           </tr>
           </thead>
           <tbody>
@@ -23,7 +23,7 @@
             <td>{{appointment.hour}}</td>
             <td>{{appointment.userNamePatient}}</td>
             <td>
-              <button (click)="delete(appointment)" class="btn btn-warning">Delete</button>
+              <button (click)="cancel(appointment)" class="btn btn-warning">Cancel</button>
             </td>
           </tr>
           </tbody>
