@@ -10,6 +10,8 @@ import {UpdateRequestPayload} from '../modify-profile/modify-profile-request.pay
 import {LinkReceptionistRequestPayload} from '../link-receptionist/link-receptionist-request-payload';
 import {AvailabilityRequestPayload} from '../availability/availability-request-payload';
 import {Users} from '../model/model';
+import {MedicalHistory} from '../medical-history/medical-history.component';
+import {AddPatientInfoRequestPayload} from '../medical-history/add-patient-info-request.payload';
 
 @Injectable({
   providedIn: 'root'
@@ -137,5 +139,17 @@ export class AuthService {
 
   search(specialization: any, province: any, healthInsurance: any) {
     return this.httpClient.get<Users[]>(`http://localhost:8080/api/auth/search/${specialization}/${province}/${healthInsurance}/`);
+  }
+
+  getPatients(username: any) {
+    return this.httpClient.get<string[]>(`http://localhost:8080/api/auth/patients/${username}/`);
+  }
+
+  searchPatient(patientsName: any) {
+    return this.httpClient.get<MedicalHistory[]>(`http://localhost:8080/api/auth/searchPatient/${patientsName}/`);
+  }
+
+  saveMedHistory(addPatientInfoRequestPayload: AddPatientInfoRequestPayload): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/auth/saveMedHistory', addPatientInfoRequestPayload, {responseType: 'text'});
   }
 }
