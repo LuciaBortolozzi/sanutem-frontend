@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../shared/auth.service';
 import {ToastrService} from 'ngx-toastr';
-import {RegisterRequestPayload} from './register-pet-request.payload';
+import {RegisterPetRequestPayload} from './register-pet-request.payload';
+import {PetsDataService} from '../services/pets-data.service';
 
 @Component({
   selector: 'app-register-pet',
@@ -15,16 +15,19 @@ export class RegisterPetComponent implements OnInit {
   petForm: FormGroup;
   focus: boolean;
   focus1: boolean;
-  registerRequestPayload: RegisterRequestPayload;
+  registerPetRequestPayload: RegisterPetRequestPayload;
+  year: string;
+  month: string;
+  day: string;
 
-  constructor(private authService: AuthService, private router: Router,
+  constructor(private petsService: PetsDataService, private router: Router,
               private toastr: ToastrService, private activatedRoute: ActivatedRoute) {
     this.nameUser = this.activatedRoute.snapshot.params.name;
-    this.registerRequestPayload = {
+    this.registerPetRequestPayload = {
       name: '',
       species: '',
       breed: '',
-      // birthday: '',
+      birthday: '',
       sex: '',
       medical_history: '',
       surgeries: '',
@@ -42,7 +45,7 @@ export class RegisterPetComponent implements OnInit {
       ]),
       species: new FormControl('', Validators.required),
       breed: new FormControl('', Validators.required),
-      date_of_birth: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
       medical_history: new FormControl('', Validators.required),
       surgeries: new FormControl('', Validators.required),
@@ -52,17 +55,33 @@ export class RegisterPetComponent implements OnInit {
 
   registerPet() {
 
-    this.registerRequestPayload.name = this.petForm.get('name').value;
-    this.registerRequestPayload.species = this.petForm.get('species').value;
-    this.registerRequestPayload.breed = this.petForm.get('breed').value;
-    // this.registerRequestPayload.birthday = this.petForm.get('birthday').value;
-    this.registerRequestPayload.sex = this.petForm.get('sex').value;
-    this.registerRequestPayload.medical_history = this.petForm.get('medical_history').value;
-    this.registerRequestPayload.surgeries = this.petForm.get('surgeries').value;
-    this.registerRequestPayload.medicines = this.petForm.get('medicines').value;
-    this.registerRequestPayload.nameUser = this.nameUser;
+    this.registerPetRequestPayload.name = this.petForm.get('name').value;
+    this.registerPetRequestPayload.species = this.petForm.get('species').value;
+    this.registerPetRequestPayload.breed = this.petForm.get('breed').value;
 
-    this.authService.registerPet(this.registerRequestPayload)
+    this.year = this.petForm.get('birthday').value.year;
+    if (Number(this.petForm.get('birthday').value.month) < 10) {
+      this.month = '0' + this.petForm.get('birthday').value.month;
+    } else {
+      this.month = this.petForm.get('birthday').value.month;
+    }
+    if (Number(this.petForm.get('birthday').value.day) < 10) {
+      this.day = '0' + this.petForm.get('birthday').value.day;
+    } else {
+      this.day = this.petForm.get('birthday').value.day;
+    }
+    this.registerPetRequestPayload.birthday =
+      this.year + '-' +
+      this.month + '-' +
+      this.day;
+
+    this.registerPetRequestPayload.sex = this.petForm.get('sex').value;
+    this.registerPetRequestPayload.medical_history = this.petForm.get('medical_history').value;
+    this.registerPetRequestPayload.surgeries = this.petForm.get('surgeries').value;
+    this.registerPetRequestPayload.medicines = this.petForm.get('medicines').value;
+    this.registerPetRequestPayload.nameUser = this.nameUser;
+
+    this.petsService.registerPet(this.registerPetRequestPayload)
       .subscribe(data => {
         this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});
@@ -74,6 +93,6 @@ export class RegisterPetComponent implements OnInit {
   }
 
   onDateSelection($event: Event) {
-
+    console.log('selected');
   }
 }

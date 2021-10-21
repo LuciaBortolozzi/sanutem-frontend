@@ -1,5 +1,3 @@
-import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
-
 export interface UpdateRequestPayload {
   username: string;
   password: string;
@@ -7,8 +5,8 @@ export interface UpdateRequestPayload {
   firstName: string;
   lastName: string;
   // dni: string;
-  address: string;
-  birthday: string;       // NgbDate;
+  homeAddress: string;
+  // birthday: string;
   sex: string;
   // role: string;
   blood_type: string;

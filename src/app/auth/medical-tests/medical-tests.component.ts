@@ -3,7 +3,7 @@ import {UploadFileService} from 'src/app/auth/services/upload-file.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-medical-tests',
@@ -27,7 +27,10 @@ export class MedicalTestsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fileInfos = this.uploadService.getFiles();
+    this.filesForm = new FormGroup({
+      file: new FormControl('', Validators.required)
+    });
+    this.fileInfos = this.uploadService.getFiles(this.nameUser);
   }
 
   selectFile(event) {
@@ -38,13 +41,13 @@ export class MedicalTestsComponent implements OnInit {
     this.progress = 0;
 
     this.currentFile = this.selectedFiles.item(0);
-    this.uploadService.upload(this.currentFile).subscribe(
+    this.uploadService.upload(this.nameUser, this.currentFile).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
-          this.fileInfos = this.uploadService.getFiles();
+          this.fileInfos = this.uploadService.getFiles(this.nameUser);
         }
       },
       err => {
