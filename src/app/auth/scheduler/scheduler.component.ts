@@ -3,18 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentsDataService} from '../services/appointments-data.service';
 import {ToastrService} from 'ngx-toastr';
 import {SchedulerRequestPayload} from './scheduler-request.payload';
-
-export class Appointments {
-  constructor(
-    public idAppointments: number,
-    public date: string,
-    public hour: string,
-    public freeAppointment: boolean,
-    public userNamePatient: string,
-    public userNameProfessional: string
-  ) {
-  }
-}
+import {Appointments} from '../model/model';
 
 @Component({
   selector: 'app-scheduler',

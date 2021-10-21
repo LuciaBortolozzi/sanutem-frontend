@@ -31,6 +31,9 @@ import {AvailabilityComponent} from './auth/availability/availability.component'
 import {MedicalHistoryComponent} from './auth/medical-history/medical-history.component';
 import {MedicalTestsComponent} from './auth/medical-tests/medical-tests.component';
 import {CalendarComponent} from './auth/calendar/calendar.component';
+import {ViewCalendarComponent} from './auth/view-calendar/view-calendar.component';
+import {ModifyCalendarComponent} from './auth/modify-calendar/modify-calendar.component';
+import {ModifyPetComponent} from './auth/modify-pet/modify-pet.component';
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import {CalendarComponent} from './auth/calendar/calendar.component';
     AvailabilityComponent,
     MedicalHistoryComponent,
     MedicalTestsComponent,
-    CalendarComponent
+    CalendarComponent,
+    ViewCalendarComponent,
+    ModifyCalendarComponent,
+    ModifyPetComponent
   ],
   imports: [
     BrowserModule,

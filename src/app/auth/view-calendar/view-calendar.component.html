@@ -1,0 +1,30 @@
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div class="row justify-content-center">
+    <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="col-sm-9">
+            <br/><br/>
+            <h1 class="display-2 mb-0">View appointments</h1>
+        </div>
+        <br/><br/><br/>
+        <div class="d-flex justify-content-center">
+            <ng-container class="custom-tab-content flex-column flex-md-row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Hour</th>
+                        <th>Patient</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let appointment of appointments">
+                        <td>{{appointment.date}}</td>
+                        <td>{{appointment.hour}}</td>
+                        <td>{{appointment.userNamePatient}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+        </div>
+    </div>
+</div>

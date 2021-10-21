@@ -15,6 +15,9 @@ import {LinkReceptionistComponent} from './auth/link-receptionist/link-reception
 import {AvailabilityComponent} from './auth/availability/availability.component';
 import {MedicalTestsComponent} from './auth/medical-tests/medical-tests.component';
 import {MedicalHistoryComponent} from './auth/medical-history/medical-history.component';
+import {CalendarComponent} from './auth/calendar/calendar.component';
+import {ViewCalendarComponent} from './auth/view-calendar/view-calendar.component';
+import {ModifyCalendarComponent} from './auth/modify-calendar/modify-calendar.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -28,6 +31,8 @@ const routes: Routes = [
   {path: 'user-profile/:name/search/:professional/schedule', component: SchedulerComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/link-receptionist', component: LinkReceptionistComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/availability', component: AvailabilityComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/view-calendar', component: ViewCalendarComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/modify-calendar', component: ModifyCalendarComponent, canActivate: [AuthGuard]},
   {path: 'sign-up', component: SignupComponent},
   {path: 'settings/:name', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}

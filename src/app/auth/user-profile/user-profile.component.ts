@@ -2,26 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AuthService} from '../shared/auth.service';
 import {FormGroup} from '@angular/forms';
-
-export class Users{
-  constructor(
-
-    public id:string,
-    public dni:string,
-    public firstName: string,
-    public lastName: string,
-    public username: string,
-    public email: string,
-    public sex: string,
-    public birthday: string,
-    public password: string,
-    public created: string,
-    public enabled: string,
-    public address: string,
-    public role: string = null
-    ) {
-  }
-}
+import {Users} from '../model/model';
 
 @Component({
   selector: 'app-user-profile',

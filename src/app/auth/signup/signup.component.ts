@@ -4,9 +4,6 @@ import {SignupRequestPayload} from './signup-request.payload';
 import {AuthService} from '../shared/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
-import {toJSDate} from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
-
-declare let $: any;
 
 @Component({
   selector: 'app-signup',
@@ -20,15 +17,18 @@ export class SignupComponent implements OnInit {
   focus: boolean;
   focus1: boolean;
   model: any;
-  provinces : string[];
-  specializations : string[];
-  healthInsurances : string[];
+  provinces: string[];
+  specializations: string[];
+  healthInsurances: string[];
   selectSpecializations: FormGroup;
   selectProvinces: FormGroup;
   selectHealthInsurance: FormGroup;
+  year: string;
+  month: string;
+  day: string;
 
   constructor(private authService: AuthService, private router: Router,
-              private toastr: ToastrService, private fb:FormBuilder) {
+              private toastr: ToastrService, private fb: FormBuilder) {
     this.signupRequestPayload = {
       username: '',
       email: '',
@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
       firstName: '',
       lastName: '',
       dni: '',
-      address: '',
+      homeAddress: '',
       birthday: '',
       sex: '',
       role: '',
@@ -107,8 +107,24 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.firstName = this.signupForm.get('firstName').value;
     this.signupRequestPayload.lastName = this.signupForm.get('lastName').value;
     this.signupRequestPayload.dni = this.signupForm.get('dni').value;
-    this.signupRequestPayload.address = this.signupForm.get('address').value;
-    // this.signupRequestPayload.birthday = this.signupForm.get('birthday').value;
+    this.signupRequestPayload.homeAddress = this.signupForm.get('address').value;
+
+    this.year = this.signupForm.get('birthday').value.year;
+    if (Number(this.signupForm.get('birthday').value.month) < 10) {
+      this.month = '0' + this.signupForm.get('birthday').value.month;
+    } else {
+      this.month = this.signupForm.get('birthday').value.month;
+    }
+    if (Number(this.signupForm.get('birthday').value.day) < 10) {
+      this.day = '0' + this.signupForm.get('birthday').value.day;
+    } else {
+      this.day = this.signupForm.get('birthday').value.day;
+    }
+    this.signupRequestPayload.birthday =
+      this.year + '-' +
+      this.month + '-' +
+      this.day;
+
     this.signupRequestPayload.sex = this.signupForm.get('sex').value;
     this.signupRequestPayload.role = this.signupForm.get('role').value;
     this.signupRequestPayload.blood_type = this.signupForm.get('blood_type').value;
@@ -131,6 +147,7 @@ export class SignupComponent implements OnInit {
   }
 
   onDateSelection($event: Event) {
+    console.log('selected');
   }
 
   getProvinces() {
@@ -150,8 +167,4 @@ export class SignupComponent implements OnInit {
       this.healthInsurances = response;
     });
   }
-
-  /*get birthday() {
-    return this.signupForm.get('birthday');
-  }*/
 }

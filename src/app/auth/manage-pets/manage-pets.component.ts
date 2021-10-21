@@ -1,21 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PetsDataService} from '../services/pets-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
-
-export class Pets {
-  constructor(
-    public id: number,
-    public name: string,
-    public sex: string,
-    public birthday: Date,
-    public species: string,
-    public breed: string,
-    public medicalHistory: string,
-    public surgeries: string,
-    public medicines: string
-  ) {
-  }
-}
+import {Pets} from '../model/model';
 
 @Component({
   selector: 'app-manage-pets',

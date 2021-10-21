@@ -6,11 +6,10 @@ import {LocalStorageService} from 'ngx-webstorage';
 import {LoginRequestPayload} from '../login/login-request.payload';
 import {LoginResponse} from '../login/login-response.payload';
 import {map, tap} from 'rxjs/operators';
-import {Users} from '../user-profile/user-profile.component';
-import {RegisterRequestPayload} from '../register-pet/register-pet-request.payload';
 import {UpdateRequestPayload} from '../modify-profile/modify-profile-request.payload';
 import {LinkReceptionistRequestPayload} from '../link-receptionist/link-receptionist-request-payload';
 import {AvailabilityRequestPayload} from '../availability/availability-request-payload';
+import {Users} from '../model/model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,10 +35,6 @@ export class AuthService {
   update(updateRequestPayload: UpdateRequestPayload): Observable<any> {
     return this.httpClient.post('http://localhost:8080/api/auth/update/',
       updateRequestPayload, {responseType: 'text'});
-  }
-
-  registerPet(registerRequestPayload: RegisterRequestPayload): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/api/auth/registerPet', registerRequestPayload, {responseType: 'text'});
   }
 
   linkReceptionist(linkReceptionistRequestPayload: LinkReceptionistRequestPayload): Observable<any> {
@@ -112,15 +107,15 @@ export class AuthService {
     return this.getJwtToken() != null;
   }
 
-  goToUserProfile(username: any) {
+  goToUserProfile(username: string) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-profile/${username}/`);
   }
 
-  goToSettings(username: any) {
+  goToSettings(username: string) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/settings/${username}/`);
   }
 
-  getUserProfileData(username: any) {
+  getUserProfileData(username: string) {
     return this.httpClient.get<Users>(`http://localhost:8080/api/auth/user-data/${username}/`);
   }
 
