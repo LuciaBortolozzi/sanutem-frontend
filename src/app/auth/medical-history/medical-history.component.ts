@@ -33,6 +33,10 @@ export class MedicalHistoryComponent implements OnInit {
   addFlag: boolean;
   medHistory: MedicalHistory;
   private name: string;
+  focus: boolean;
+  year: string;
+  month: string;
+  day: string;
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
               private router: Router, private toastr: ToastrService, private fb: FormBuilder, private fb2: FormBuilder) {
@@ -53,7 +57,6 @@ export class MedicalHistoryComponent implements OnInit {
     this.getPatients();
 
     this.searchForm = this.fb.group({
-
       selectPatient:[null]
     });
 
@@ -80,8 +83,23 @@ export class MedicalHistoryComponent implements OnInit {
   }
 
   saveMedHistory() {
-    this.addPatientInfoRequestPayload.date = this.medHistoryForm.get('date').value;
-    console.log(this.addPatientInfoRequestPayload.date);
+    console.log('in saveMedHistory');
+    this.year = this.medHistoryForm.get('date').value.year;
+    if (Number(this.medHistoryForm.get('date').value.month) < 10) {
+      this.month = '0' + this.medHistoryForm.get('date').value.month;
+    } else {
+      this.month = this.medHistoryForm.get('date').value.month;
+    }
+    if (Number(this.medHistoryForm.get('date').value.day) < 10) {
+      this.day = '0' + this.medHistoryForm.get('date').value.day;
+    } else {
+      this.day = this.medHistoryForm.get('date').value.day;
+    }
+    this.addPatientInfoRequestPayload.date =
+      this.year + '-' +
+      this.month + '-' +
+      this.day;
+
     this.addPatientInfoRequestPayload.details = this.medHistoryForm.get('details').value;
     console.log(this.addPatientInfoRequestPayload.details);
     this.addPatientInfoRequestPayload.patientName = this.searchForm.get('selectPatient').value;
@@ -102,5 +120,9 @@ export class MedicalHistoryComponent implements OnInit {
     this.authService.getPatients(this.name).subscribe(response => {
       this.patients = response;
     });
+  }
+
+  onDateSelection($event: Event) {
+    console.log('selected');
   }
 }

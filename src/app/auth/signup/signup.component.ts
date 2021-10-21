@@ -87,17 +87,6 @@ export class SignupComponent implements OnInit {
       selectProvinces:[null],
       selectHealthInsurance:[null]
     });
-
-    /*$(() => {
-      $('#birthday').birthday({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: '1920:2021',
-        onSelect: (dateText) => {
-          this.birthday.setValue(dateText);
-        }
-      });
-    });*/
   }
 
   signup() {
