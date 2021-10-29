@@ -2,24 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
 import {ToastrService} from 'ngx-toastr';
-
-export class Users {
-  constructor(
-    public id: string,
-    public dni: string,
-    public firstName: string,
-    public lastName: string,
-    public username: string,
-    public email: string,
-    public sex: string,
-    public birthday: string,
-    public password: string,
-    public created: string,
-    public enabled: string,
-    public role: string = null,
-    public address: string) {
-  }
-}
+import {Users} from '../model/model';
 
 @Component({
   selector: 'app-settings',

@@ -1,10 +1,8 @@
-import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
-
-export interface RegisterRequestPayload{
+export interface RegisterPetRequestPayload {
   name: string;
   species: string;
   breed: string;
-  // birthday: string;
+  birthday: string;
   sex: string;
   medical_history: string;
   surgeries: string;

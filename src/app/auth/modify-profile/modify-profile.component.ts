@@ -4,25 +4,7 @@ import {AuthService} from '../shared/auth.service';
 import {UpdateRequestPayload} from './modify-profile-request.payload';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-
-export class Users{
-  constructor(
-
-    public id:string,
-    public dni:string,
-    public firstName: string,
-    public lastName: string,
-    public username: string,
-    public email: string,
-    public sex: string,
-    public birthday: string,
-    public password: string,
-    public created: string,
-    public enabled: string,
-    public role: string = null,
-    public address: string) {
-  }
-}
+import {Users} from '../model/model';
 
 @Component({
   selector: 'app-modify-profile',
@@ -35,16 +17,15 @@ export class ModifyProfileComponent implements OnInit {
   focus: boolean;
   focus1: boolean;
   name: string;
-  user : Users;
-  public emailUser:string;
-  public passwordUser:string;
-  public firstNameUser:string;
-  public lastNameUser:string;
-  public addressUser:string;
-  public userNameUser:string;
-  public dniUser:string;
-  public sexUser:string;
-  // birthdayUser:string;
+  user: Users;
+  public emailUser: string;
+  public passwordUser: string;
+  public firstNameUser: string;
+  public lastNameUser: string;
+  public addressUser: string;
+  public userNameUser: string;
+  public dniUser: string;
+  public sexUser: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private authService: AuthService,
@@ -58,8 +39,8 @@ export class ModifyProfileComponent implements OnInit {
       firstName: '',
       lastName: '',
       // dni: '',
-      address: '',
-      birthday: '',
+      homeAddress: '',
+      // birthday: '',
       sex: '',
       // role: '',
       blood_type: '',
@@ -92,7 +73,6 @@ export class ModifyProfileComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       dni: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      birthday: new FormControl('', Validators.required),
       sex: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),
       blood_type: new FormControl('', Validators.required),
@@ -105,42 +85,35 @@ export class ModifyProfileComponent implements OnInit {
   }
 
   update() {
-    if (this.updateForm.get('email').value === '')
-    {
-      this.updateProfile.email =this.emailUser;
-    }else{
+    if (this.updateForm.get('email').value === '') {
+      this.updateProfile.email = this.emailUser;
+    } else {
       this.updateProfile.email = this.updateForm.get('email').value;
     }
     // this.updateProfile.username = this.updateForm.get('username').value;
     this.updateProfile.username = this.name;
     this.updateProfile.password = this.updateForm.get('password').value;
-    if (this.updateForm.get('firstName').value === '')
-    {
-      this.updateProfile.firstName =this.firstNameUser;
-    }else{
+    if (this.updateForm.get('firstName').value === '') {
+      this.updateProfile.firstName = this.firstNameUser;
+    } else {
       this.updateProfile.firstName = this.updateForm.get('firstName').value;
     }
-    if (this.updateForm.get('lastName').value === '')
-    {
-      this.updateProfile.lastName =this.lastNameUser;
-    }else{
+    if (this.updateForm.get('lastName').value === '') {
+      this.updateProfile.lastName = this.lastNameUser;
+    } else {
       this.updateProfile.lastName = this.updateForm.get('lastName').value;
     }
     // this.updateProfile.dni = this.updateForm.get('dni').value;
-    if (this.updateForm.get('address').value === '')
-    {
-      this.updateProfile.address =this.addressUser;
-    }else{
-      this.updateProfile.address = this.updateForm.get('address').value;
+    if (this.updateForm.get('address').value === '') {
+      this.updateProfile.homeAddress = this.addressUser;
+    } else {
+      this.updateProfile.homeAddress = this.updateForm.get('address').value;
     }
-    // this.updateProfile.birthday = this.updateForm.get('birthday').value;
-    if (this.updateForm.get('sex').value === '')
-    {
-      this.updateProfile.sex =this.sexUser;
-    }else{
+    if (this.updateForm.get('sex').value === '') {
+      this.updateProfile.sex = this.sexUser;
+    } else {
       this.updateProfile.sex = this.updateForm.get('sex').value;
     }
-    // this.updateProfile.role = this.updateForm.get('role').value;
     this.updateProfile.blood_type = this.updateForm.get('blood_type').value;
     this.updateProfile.medical_history = this.updateForm.get('medical_history').value;
     this.updateProfile.surgeries = this.updateForm.get('surgeries').value;
@@ -152,14 +125,11 @@ export class ModifyProfileComponent implements OnInit {
       .subscribe(data => {
         this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});
+        this.toastr.success('Update successful!');
       }, error => {
         console.log(error);
         this.toastr.error('Update Failed! Please try again');
       });
-  }
-
-  onDateSelection($event: Event) {
-
   }
 
   getUserProfileData() {
@@ -171,10 +141,8 @@ export class ModifyProfileComponent implements OnInit {
       this.passwordUser = this.user.password;
       this.firstNameUser = this.user.firstName;
       this.lastNameUser = this.user.lastName;
-      this.addressUser = this.user.address;
+      this.addressUser = this.user.homeAddress;
       this.sexUser = this.user.sex;
-      // roleUser -> way to avoid some errors in the web console
-      // this.roleUser = this.user.role;
       // this.router.navigateByUrl('/user-profile/' + this.username);
     });
   }
