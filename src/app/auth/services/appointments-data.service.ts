@@ -24,8 +24,8 @@ export class AppointmentsDataService {
     return this.http.get<Appointments[]>(`http://localhost:8080/api/auth/user-profile/${receptionist}/modify-calendar`);
   }
 
-  cancelAppointment(receptionist: string, appointment: CancelAppointmentRequestPayload) {
-    return this.http.post(`http://localhost:8080/api/auth/user-profile/${receptionist}/modify-calendar/${appointment.idAppointments}`,
+  cancelAppointment(appointment: CancelAppointmentRequestPayload) {
+    return this.http.post('http://localhost:8080/api/auth/user-profile/modify-calendar/cancel-appointment/',
       appointment, {responseType: 'text'});
   }
 

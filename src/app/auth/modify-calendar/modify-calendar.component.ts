@@ -19,6 +19,14 @@ export class ModifyCalendarComponent implements OnInit {
   constructor(private appointmentsService: AppointmentsDataService, private router: Router,
               private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
     this.userNameReceptionist = this.activatedRoute.snapshot.params.name;
+    this.cancelAppointment = {
+      idAppointments: 0,
+      date: '',
+      hour: '',
+      userNamePatient: '',
+      userNameProfessional: '',
+      freeAppointment: false,
+    }
   }
 
   ngOnInit(): void {
@@ -34,20 +42,21 @@ export class ModifyCalendarComponent implements OnInit {
   }
 
   cancel(appointment: Appointments) {
+    console.log(appointment.idAppointments);
     this.cancelAppointment.idAppointments = appointment.idAppointments;
     this.cancelAppointment.date = appointment.date;
     this.cancelAppointment.hour = appointment.hour;
     this.cancelAppointment.userNamePatient = appointment.userNamePatient;
     this.cancelAppointment.userNameProfessional = appointment.userNameProfessional;
     this.cancelAppointment.freeAppointment = appointment.freeAppointment;
-    this.appointmentsService.cancelAppointment(this.userNameReceptionist, this.cancelAppointment)
+    this.appointmentsService.cancelAppointment(this.cancelAppointment)
       .subscribe(response => {
         this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});
-        this.toastr.success('Schedule successful!');
+        this.toastr.success('Cancellation successful!');
       }, error => {
         console.log(error);
-        this.toastr.error('Schedule Failed! Please try again');
+        this.toastr.error('Cancellation Failed! Please try again');
       });
   }
 }
