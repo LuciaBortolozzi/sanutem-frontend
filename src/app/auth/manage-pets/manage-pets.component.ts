@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PetsDataService} from '../services/pets-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Pets} from '../model/model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-pets',
@@ -13,7 +14,8 @@ export class ManagePetsComponent implements OnInit {
   pets: Pets[];
   nameUser: string;
 
-  constructor(private petsService: PetsDataService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private petsService: PetsDataService, private router: Router,
+              private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
     this.nameUser = this.activatedRoute.snapshot.params.name;
   }
 
@@ -30,18 +32,14 @@ export class ManagePetsComponent implements OnInit {
   }
 
   updatePet(id) {
-    console.log(`update ${id}`)
     this.router.navigate(['pets', id])
   }
 
   deletePet(id) {
-    console.log(`Delete ${id}`);
     this.petsService.deletePet(this.nameUser, id).subscribe(
       response => {
-        console.log(response);
-        this.message = 'Delete successful';
-        this.refreshPets();
-      }
+        this.message = `Delete of Pet ${id} Successful!`;
+        this.refreshPets();}
     );
   }
 

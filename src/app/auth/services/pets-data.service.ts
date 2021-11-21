@@ -21,12 +21,12 @@ export class PetsDataService {
     }
 
     deletePet(username: string, id: number) {
-        return this.http.delete(`http://localhost:8080/api/auth/user-profile/${username}/pets/${id}`);
+        return this.http.delete(`http://localhost:8080/api/auth/user-profile/${username}/pets/${id}/`, {responseType: 'text'});
     }
-
+/*
     retrievePet(username: string, id: number) {
     return this.http.get<Pets>(`http://localhost:8080/api/auth/user-profile/${username}/pets/${id}`);
-  }
+  } */
 
   updatePet(username: string, id: number, pet: Pets) {
     return this.http.put(
