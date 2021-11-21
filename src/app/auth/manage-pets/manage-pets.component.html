@@ -34,7 +34,7 @@
             <td>{{pet.surgeries}}</td>
             <td>{{pet.medicines}}</td>
             <td>
-              <button (click)="updatePet(pet.idPet)" class="btn btn-success">Update</button>
+              <button class="btn btn-1 btn-neutral" type="button" routerLink="modify-pets/{{pet.idPet}}">Update</button>
             </td>
             <td>
               <button (click)="deletePet(pet.idPet)" class="btn btn-warning">Delete</button>

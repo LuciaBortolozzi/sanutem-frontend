@@ -18,6 +18,7 @@ import {MedicalHistoryComponent} from './auth/medical-history/medical-history.co
 import {CalendarComponent} from './auth/calendar/calendar.component';
 import {ViewCalendarComponent} from './auth/view-calendar/view-calendar.component';
 import {ModifyCalendarComponent} from './auth/modify-calendar/modify-calendar.component';
+import {ModifyPetComponent} from './auth/modify-pet/modify-pet.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'user-profile/:name/update', component: ModifyProfileComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/register-pet', component: RegisterPetComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/manage-pets', component: ManagePetsComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile/:name/manage-pets/modify-pets/:id', component: ModifyPetComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/medical-tests', component: MedicalTestsComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/medical-history', component: MedicalHistoryComponent, canActivate: [AuthGuard]},
   {path: 'user-profile/:name/search', component: SearchComponent, canActivate: [AuthGuard]},

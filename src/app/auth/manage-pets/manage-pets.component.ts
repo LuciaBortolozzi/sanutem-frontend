@@ -31,10 +31,6 @@ export class ManagePetsComponent implements OnInit {
     );
   }
 
-  updatePet(id) {
-    this.router.navigate(['pets', id])
-  }
-
   deletePet(id) {
     this.petsService.deletePet(this.nameUser, id).subscribe(
       response => {
