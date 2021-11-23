@@ -21,8 +21,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text" id="name"
-                           [formControlName]="'name'"
+                    <input class="form-control" value={{namePet}} placeholder="Name" type="text" id="name"
+                           [formControlName]="'pet'"
                            name="name" autofocus required>
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Species" type="text" id="species"
+                    <input class="form-control" value={{speciesPet}} placeholder="Species" type="text" id="species"
                            [formControlName]="'species'"
                            name="species" autofocus>
                   </div>
@@ -41,13 +41,13 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Breed (if applies)" type="text" id="breed"
+                    <input class="form-control" value={{breedPet}} placeholder="Breed (if applies)" type="text" id="breed"
                            [formControlName]="'breed'"
                            name="breed" autofocus>
                   </div>
                 </div>
                 <!-- Datepicker -->
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                   <div class="form-group" [ngClass]="{'focused':focus1===true}">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
@@ -59,18 +59,18 @@
                              (blur)="focus1=false" type="text" (select)="onDateSelection($event)" autocomplete="off"/>
                     </div>
                   </div>
-                </div>
+                </div>-->
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="custom-control custom-radio mb-3">
                     <input id="male" name="sex" [formControlName]="'sex'" class="custom-control-input" value="male"
-                           type="radio">
+                           type="radio" [checked]="sexPet == 'male'">
                     <label class="custom-control-label" for="male">
                       <label>Male</label>
                     </label>
                   </div>
                   <div class="custom-control custom-radio mb-3">
                     <input id="female" name="sex" [formControlName]="'sex'" class="custom-control-input" value="female"
-                           type="radio">
+                           type="radio" [checked]="sexPet == 'female'">
                     <label class="custom-control-label" for="female">
                       <label>Female</label>
                     </label>
@@ -82,8 +82,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <textarea class="form-control" placeholder="Medical History" type="text" id="medical_history"
-                              [formControlName]="'medical_history'"
+                    <textarea class="form-control" value={{medicalHistoryPet}} placeholder="Medical History" type="text" id="medical_history"
+                              [formControlName]="'medicalHistory'"
                               name="medical_history" autofocus></textarea>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <textarea class="form-control" placeholder="Surgeries" type="text" id="surgeries"
+                    <textarea class="form-control" value={{surgeriesPet}} placeholder="Surgeries" type="text" id="surgeries"
                               [formControlName]="'surgeries'"
                               name="surgeries" autofocus></textarea>
                   </div>
@@ -104,7 +104,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <textarea class="form-control" placeholder="Medicines" type="text" id="medicines"
+                    <textarea class="form-control" value={{medicinesPet}} placeholder="Medicines" type="text" id="medicines"
                               [formControlName]="'medicines'"
                               name="medicines" autofocus></textarea>
                   </div>

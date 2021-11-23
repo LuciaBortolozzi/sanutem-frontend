@@ -12,7 +12,7 @@ export class Appointments {
 
 export class Pets {
   constructor(
-    public id: number,
+    public idPet: string,
     public name: string,
     public sex: string,
     public birthday: Date,
