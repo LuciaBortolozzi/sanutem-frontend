@@ -45,7 +45,7 @@
             <tr *ngFor="let user of users">
               <td>{{user.firstName}}</td>
               <td>{{user.lastName}}</td>
-              <td>{{user.address}}</td>
+              <td>{{user.homeAddress}}</td>
               <td>
                 <button (click)="schedule(user.username)" class="btn btn-success">Schedule</button>
               </td>
