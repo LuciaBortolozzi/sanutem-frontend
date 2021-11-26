@@ -35,8 +35,8 @@ export class ModifyPetComponent implements OnInit {
     this.name = this.activatedRoute.snapshot.params.name;
     this.idPet = this.activatedRoute.snapshot.params.id;
     this.updatePet = {
-      nameUser:  '',
-      idPet:  '',
+      nameUser: '',
+      idPet: '',
       pet: '',
       species: '',
       breed: '',
@@ -117,7 +117,8 @@ export class ModifyPetComponent implements OnInit {
 
   }
 
-  onDateSelection($event: Event) {}
+  onDateSelection($event: Event) {
+  }
 
   getPet() {
     this.petsService.retrievePet(this.name, this.idPet).subscribe(

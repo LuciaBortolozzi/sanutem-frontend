@@ -41,17 +41,17 @@ export class SearchComponent implements OnInit {
 
     this.searchForm = this.fb.group({
 
-      selectSpecializations:[null],
-      selectProvinces:[null],
-      selectHealthInsurance:[null]
+      selectSpecializations: [null],
+      selectProvinces: [null],
+      selectHealthInsurance: [null]
     });
   }
 
   search() {
 
-      this.searchProfessional.specializationsName = this.searchForm.get('selectSpecializations').value;
-      this.searchProfessional.provincesName = this.searchForm.get('selectProvinces').value;
-      this.searchProfessional.healthInsurancesName = this.searchForm.get('selectHealthInsurance').value;
+    this.searchProfessional.specializationsName = this.searchForm.get('selectSpecializations').value;
+    this.searchProfessional.provincesName = this.searchForm.get('selectProvinces').value;
+    this.searchProfessional.healthInsurancesName = this.searchForm.get('selectHealthInsurance').value;
 
     this.authService.search(this.searchProfessional.specializationsName,
       this.searchProfessional.provincesName, this.searchProfessional.healthInsurancesName)

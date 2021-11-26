@@ -26,12 +26,12 @@
         <li *ngIf="!isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/sign-up">Sign Up</a>
         </li>
-<!--        <li *ngIf="isLoggedIn" class="nav-item" >
-          <a class="nav-link no-caret"  href="javascript:void(0)">Search Professionals</a>
-        </li>
-        <li *ngIf="isLoggedIn" class="nav-item" >
-          <a class="nav-link no-caret"  href="javascript:void(0)">View Appointments</a>
-        </li>-->
+        <!--        <li *ngIf="isLoggedIn" class="nav-item" >
+                  <a class="nav-link no-caret"  href="javascript:void(0)">Search Professionals</a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item" >
+                  <a class="nav-link no-caret"  href="javascript:void(0)">View Appointments</a>
+                </li>-->
         <li *ngIf="isLoggedIn" class="nav-item" ngbDropdown placement="bottom-right">
           <a class="nav-link no-caret" id="navbar-primary_dropdown_1" ngbDropdownToggle>{{username}}</a>
           <div class="dropdown-menu-right" aria-labelledby="navbar-primary_dropdown_1" ngbDropdownMenu>

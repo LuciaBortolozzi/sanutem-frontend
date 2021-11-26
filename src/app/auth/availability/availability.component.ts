@@ -29,7 +29,7 @@ export class AvailabilityComponent implements OnInit {
       month: '',
       days: [],
       hours: [],
-      nameReceptionist:''
+      nameReceptionist: ''
     };
   }
 
@@ -39,7 +39,7 @@ export class AvailabilityComponent implements OnInit {
       selectMonths:[null]
     });*/
     this.availabilityForm = this.fb.group({
-      selectMonths:[null],
+      selectMonths: [null],
       dayMonday: new FormControl('', Validators.required),
       dayTuesday: new FormControl('', Validators.required),
       dayWednesday: new FormControl('', Validators.required),

@@ -28,9 +28,9 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  deleteUser(){
+  deleteUser() {
     this.authService.deleteUser(this.nameUser).subscribe(
-      response=>{
+      response => {
         this.router.navigate(['/'],
           {queryParams: {registered: 'true'}});
         this.toastr.success('Delete Successful');
