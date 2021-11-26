@@ -35,7 +35,8 @@ export class ManagePetsComponent implements OnInit {
     this.petsService.deletePet(this.nameUser, id).subscribe(
       response => {
         this.message = `Delete of Pet ${id} Successful!`;
-        this.refreshPets();}
+        this.refreshPets();
+      }
     );
   }
 

@@ -57,7 +57,7 @@ export class MedicalHistoryComponent implements OnInit {
     this.getPatients();
 
     this.searchForm = this.fb.group({
-      selectPatient:[null]
+      selectPatient: [null]
     });
 
     this.medHistoryForm = this.fb2.group({
@@ -77,7 +77,8 @@ export class MedicalHistoryComponent implements OnInit {
       });
     this.searchedFlag = true;
   }
-  add(){
+
+  add() {
     this.addFlag = true;
     this.searchedFlag = false;
   }

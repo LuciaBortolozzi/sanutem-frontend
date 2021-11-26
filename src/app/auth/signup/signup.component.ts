@@ -83,9 +83,9 @@ export class SignupComponent implements OnInit {
       surgeries: new FormControl('', Validators.required),
       medicines: new FormControl('', Validators.required),
       license_number: new FormControl('', Validators.required),
-      selectSpecializations:[null],
-      selectProvinces:[null],
-      selectHealthInsurance:[null]
+      selectSpecializations: [null],
+      selectProvinces: [null],
+      selectHealthInsurance: [null]
     });
   }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
 import {FormGroup} from '@angular/forms';
 import {Users} from '../model/model';
